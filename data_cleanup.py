@@ -18,7 +18,7 @@ class CleanUp(object):
         random = pd.read_csv('data/random.csv')
         streaming1['New_Date_Time'] = streaming1['Date_Time'].str[:21]
         #streaming2['New_Date_Time'] = streaming2['Date_Time'].str[:22]
-        random['New_Date_Time'] = random['Date_Time'].str[:21]
+        random['New_Date_Time'] = random['Date_Time'].str[:2
 
         merged = pd.merge(streaming1,random, how = 'left', left_on = 'New_Date_Time', right_on = 'New_Date_Time')
         merged['Target'] = merged['Target'].ffill()
