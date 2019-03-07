@@ -17,6 +17,8 @@ except KeyboardInterrupt:
     pool.join()
     subject = sys.argv[1]
     data = CleanUp(subject)
-    complete = data.process_data()
-    complete.to_csv('data/subjects/'+subject+'.csv', index = False)
+    complete,random, streaming = data.process_data()
+    complete.to_csv('data/subjects/'+subject+'/'+subject+'_final.csv', index = False)
+    random.to_csv('data/subjects/'+subject+'/'+subject+'_random.csv', index = False)
+    streaming.to_csv('data/subjects/'+subject+'/'+subject+'_orignal.csv', index = False)
     print('Data Cleaned up!')

@@ -46,4 +46,4 @@ class CleanUp(object):
         data_final = pd.concat([merged, streaming2_update],sort=False, ignore_index = False, axis =1 ).fillna(0)
 
         """
-        return data_final
+        return data_final, random, streaming1

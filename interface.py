@@ -10,7 +10,7 @@ data_writer.writerow(["Date_Time", "Target"])
 
 sleep(10)
 
-raw_input("Press Enter to continue...")
+#raw_input("Press Enter to continue...")
 
 try:
     while True:
