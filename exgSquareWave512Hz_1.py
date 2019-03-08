@@ -105,6 +105,10 @@ def setSamplingRateHz(rate=512):
 	ser.write(struct.pack('<BH', 0x05, clock_wait))
 	wait_for_ack()
 
+
+def animate(y):
+	ys = []
+	xs
 '''
 **************************************************
 * Connect to Shimmer and send configuraion bytes *
@@ -242,7 +246,6 @@ else:
 			c2ch2 *= exgCalFactor
 
 			data_writer.writerow([datetime.datetime.now(), c1ch1, c1ch2])
-
 			#print "0x%02x,\t\t%5d,\t0x%02x,\t\t%2.4f,%2.4f,\t\t%s0x%02x,\t\t%2.4f,%2.4f" % \
 			#(packettype, timestamp, c1status, c1ch1, c1ch2, "\t" if c1ch1>0 else "", c2status, c2ch1, c2ch2)
 
