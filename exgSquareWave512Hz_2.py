@@ -105,10 +105,6 @@ def setSamplingRateHz(rate=512):
 	ser.write(struct.pack('<BH', 0x05, clock_wait))
 	wait_for_ack()
 
-
-def animate(y):
-	ys = []
-	xs
 '''
 **************************************************
 * Connect to Shimmer and send configuraion bytes *
@@ -192,7 +188,7 @@ else:
 	numbytes = 0
 	framesize = (18 if exgRes_24bit else 14) # 1byte packet type + 3byte timestamp + 14byte ExG data
 
-	data_file = open('data/streaming1.csv', mode='w')
+	data_file = open('data/streaming2.csv', mode='w')
 	data_writer = csv.writer(data_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 	data_writer.writerow(["Date_Time", "CH_3_mV", "CH_4_mV"])
 
@@ -257,4 +253,4 @@ else:
 		ser.close()
 		data_file.close()
 		print
-		print "All done!"
+		print "All done: 2!"

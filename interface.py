@@ -3,6 +3,7 @@ import random
 from time import sleep
 import datetime
 import csv
+import sys
 
 
 data_file = open('data/random.csv', mode='w')
@@ -11,9 +12,9 @@ data_writer.writerow(["Date_Time", "Target"])
 
 sleep(10)
 
-samples = 10
+samples = int(sys.argv[1])
 
-input("Press Enter to continue...")
+raw_input("Press Enter to continue...")
 
 try:
     while samples != 0:

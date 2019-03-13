@@ -105,10 +105,6 @@ def setSamplingRateHz(rate=512):
 	ser.write(struct.pack('<BH', 0x05, clock_wait))
 	wait_for_ack()
 
-
-def animate(y):
-	ys = []
-	xs
 '''
 **************************************************
 * Connect to Shimmer and send configuraion bytes *
@@ -137,6 +133,8 @@ else:
 	srRev = ddata[3]
 
 	print "Device: SR%d-%d" % (srNumber, srRev)
+
+
 
 	#send the set sensors command
 	ser.write(struct.pack('BBBB', 0x08, 0x18, 0x00, 0x00))  #exg1 and exg2
@@ -257,4 +255,4 @@ else:
 		ser.close()
 		data_file.close()
 		print
-		print "All done!"
+		print "All done: 1!"
