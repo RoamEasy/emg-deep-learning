@@ -6,7 +6,7 @@ from data_cleanup import CleanUp
 #sudo rfcomm bind 0 00:06:66:66:94:B3  ***
 #sudo rfcomm bind 1 00:06:66:66:97:57  ***
 
-processes = ('interface.py ' +sys.argv[2], 'exgSquareWave512Hz_1.py /dev/rfcomm0', 'exgSquareWave512Hz_2.py /dev/rfcomm1')
+processes = ('interface.py ' +sys.argv[2], 'exgSquareWave512Hz_0.py /dev/rfcomm0', 'exgSquareWave512Hz_1.py /dev/rfcomm2')
 
 
 def run_process(process):

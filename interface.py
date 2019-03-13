@@ -10,6 +10,11 @@ data_file = open('data/random.csv', mode='w')
 data_writer = csv.writer(data_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 data_writer.writerow(["Date_Time", "Target"])
 
+def end():
+    data_writer.writerow([datetime.datetime.now(), 99])
+    data_file.close()
+    print('Done')
+
 sleep(10)
 
 samples = int(sys.argv[1])
@@ -27,10 +32,6 @@ try:
         data_writer.writerow([datetime.datetime.now(), rand_val])
         sleep(2)
         samples-=1
-    data_writer.writerow([datetime.datetime.now(), 99])
-    data_file.close()
-    print('Done')
+    end()
 except KeyboardInterrupt:
-    data_writer.writerow([datetime.datetime.now(), 99])
-    data_file.close()
-    print('Done')
+    end()
