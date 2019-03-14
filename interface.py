@@ -5,7 +5,6 @@ import datetime
 import csv
 import sys
 
-
 data_file = open('data/random.csv', mode='w')
 data_writer = csv.writer(data_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 data_writer.writerow(["Date_Time", "Target"])

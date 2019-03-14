@@ -1,11 +1,21 @@
 import pandas as pd
 import sys
+import os
 
 class CleanUp(object):
 
     def __init__(self, subject):
         self.subject = subject
 
+    def generate_data(self, processed):
+        directory = 'data/subjects/'+self.subject+'/'
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        processed['data_final'].to_csv(directory + self.subject+'_final.csv', index = False)
+        processed['random'].to_csv(directory + self.subject+'_random.csv', index = False)
+        processed['streaming1'].to_csv(directory + self.subject+'_orignal1.csv', index = False)
+        processed['streaming2'].to_csv(directory + self.subject+'_orignal2.csv', index = False)
+        print('Data Cleaned up!')
 
     def process_data(self):
         '''
