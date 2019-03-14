@@ -17,7 +17,8 @@ def end():
 
 sleep(10)
 
-samples = int(sys.argv[1])
+type = sys.argv[1]
+samples = int(sys.argv[2])
 
 raw_input("Press Enter to continue...")
 
@@ -26,8 +27,10 @@ try:
         print('relax')
         data_writer.writerow([datetime.datetime.now(), 'relax'])
         sleep(2)
-        #rand_val = randint(0,9)
-        rand_val = random.choice(['yes','no'])
+        if type =='word':
+            rand_val = random.choice(['yes','no'])
+        else:
+            rand_val = randint(0,9)
         print(rand_val)
         data_writer.writerow([datetime.datetime.now(), rand_val])
         sleep(2)
