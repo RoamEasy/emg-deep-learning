@@ -58,3 +58,9 @@ class CleanUp(object):
         ret = {'data_final': data_final, 'random': random, 'streaming1':streaming1, 'streaming2': streaming2}
 
         return ret
+
+if __name__ == '__main__':
+    subject = raw_input('Enter Subject...')
+    data = CleanUp(subject)
+    dict = data.process_data()
+    data.generate_data(dict)

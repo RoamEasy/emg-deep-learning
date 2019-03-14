@@ -7,8 +7,7 @@ from data_cleanup import CleanUp
 #sudo rfcomm bind 1 00:06:66:66:94:B3  ***
 # ex to run: sudo python main_script.py word test_data 50
 
-processes = ('interface.py ' +sys.argv[1]+ ' '+sys.argv[3], 'exgSquareWave512Hz_1.py /dev/rfcomm0', 'exgSquareWave512Hz_2.py /dev/rfcomm1')
-data = CleanUp(sys.argv[2])
+processes = ('interface.py ' +sys.argv[1]+ ' '+sys.argv[2], 'exgSquareWave512Hz_1.py /dev/rfcomm0', 'exgSquareWave512Hz_2.py /dev/rfcomm1')
 
 def run_process(process):
     os.system('sudo python {}'.format(process))
@@ -18,7 +17,5 @@ try:
     pool.map(run_process, processes)
 
 except KeyboardInterrupt:
-    dict = data.process_data()
-    data.generate_data(dict)
     pool.close()
     pool.join()
