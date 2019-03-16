@@ -2,6 +2,8 @@
 import sys, struct, serial, time
 import csv
 import datetime
+import pdb
+
 
 # ExG configuration parameters
 exgconfigGain = {
@@ -32,7 +34,7 @@ exg_16bit = [0x00, 0x00, 0x18]
 * User settable variables *
 ***************************
 '''
-samplingFrequency 	= 512 						# frequency in Hz
+samplingFrequency 	= 512						# frequency in Hz
 exgRes_24bit 		= True						# 24bit if True, else 16bit
 exgGainValue 		= exgconfigGain['GAIN_1'] 	# sets a gain of 1
 
@@ -157,9 +159,9 @@ else:
 	time.sleep(2)
 
 	if exgRes_24bit:
-		exgCalFactor = (((2.42*1000)/exgGain['GAIN_1'])/(pow(2,23)-1))
+		exgCalFactor = (((2.42*1000)/exgGain['GAIN_12'])/(pow(2,23)-1))
 	else:
-		exgCalFactor = (((2.42*1000)/(exgGain['GAIN_1']*2))/(pow(2,15)-1))
+		exgCalFactor = (((2.42*1000)/(exgGain['GAIN_12']*2))/(pow(2,15)-1))
 
 	if(srNumber == 47 and srRev >= 4):
 		chip1Config[1] |= 8 # Config byte for CHIP1 in SR47-4
@@ -188,7 +190,7 @@ else:
 
 	data_file = open('data/streaming2.csv', mode='w')
 	data_writer = csv.writer(data_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-	data_writer.writerow(["Date_Time", "CH_1_MV", "CH_1_2_MV", "CH_2_MV", "CH_2_1_MV"])
+	data_writer.writerow(["Date_Time", "CH_3_mV", "CH_4_mV"])
 
 	#print "Packet Type,\tTimestamp, \tChip1 Status, \tChip1 Channel 1,2 (mv), \tChip2 Status, \tChip2 Channel 1,2 (mV), \tNumber"
 	print "Process Recording ..."
@@ -239,8 +241,7 @@ else:
 			c2ch1 *= exgCalFactor
 			c2ch2 *= exgCalFactor
 
-			data_writer.writerow([datetime.datetime.now(), c1ch1, c1ch2, c2ch1, c2ch2])
-
+			data_writer.writerow([datetime.datetime.now(), c1ch1, c1ch2])
 			#print "0x%02x,\t\t%5d,\t0x%02x,\t\t%2.4f,%2.4f,\t\t%s0x%02x,\t\t%2.4f,%2.4f" % \
 			#(packettype, timestamp, c1status, c1ch1, c1ch2, "\t" if c1ch1>0 else "", c2status, c2ch1, c2ch2)
 
@@ -252,4 +253,4 @@ else:
 		ser.close()
 		data_file.close()
 		print
-		print "All done!"
+		print "All done: 2!"

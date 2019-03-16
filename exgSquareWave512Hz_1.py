@@ -4,6 +4,26 @@ import csv
 import datetime
 import pdb
 
+'''
+from matplotlib import pyplot
+from matplotlib.animation import FuncAnimation
+from random import randrange
+
+
+x_data, y_data = [], []
+
+figure = pyplot.figure()
+line, = pyplot.plot_date(x_data, y_data, '-')
+
+def update(frames):
+    x_data.append(datetime.datetime.now())
+    y_data.append(frames)
+    line.set_data(x_data, y_data)
+    figure.gca().relim()
+    figure.gca().autoscale_view()
+    return line,
+
+'''
 
 # ExG configuration parameters
 exgconfigGain = {
@@ -134,6 +154,8 @@ else:
 
 	print "Device: SR%d-%d" % (srNumber, srRev)
 
+
+
 	#send the set sensors command
 	ser.write(struct.pack('BBBB', 0x08, 0x18, 0x00, 0x00))  #exg1 and exg2
 	wait_for_ack()
@@ -242,10 +264,12 @@ else:
 			c2ch2 *= exgCalFactor
 
 			data_writer.writerow([datetime.datetime.now(), c1ch1, c1ch2])
-
 			#print "0x%02x,\t\t%5d,\t0x%02x,\t\t%2.4f,%2.4f,\t\t%s0x%02x,\t\t%2.4f,%2.4f" % \
 			#(packettype, timestamp, c1status, c1ch1, c1ch2, "\t" if c1ch1>0 else "", c2status, c2ch1, c2ch2)
-
+			'''
+			animation = FuncAnimation(figure, update,int(round(c1ch1)), interval=200)
+			pyplot.show()
+			'''
 	except KeyboardInterrupt:
 		#send stop streaming command
 		ser.write(struct.pack('B', 0x20))
@@ -254,4 +278,4 @@ else:
 		ser.close()
 		data_file.close()
 		print
-		print "All done!"
+		print "All done: 1!"
