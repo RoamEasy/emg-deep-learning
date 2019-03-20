@@ -118,7 +118,7 @@ def wait_for_ack():
       ddata = ser.read(1)
    return
 
-def setSamplingRateHz(rate=1024):
+def setSamplingRateHz(rate=512):
 	# send the set sampling rate command
 	sampling_freq = rate #Hz
 	clock_wait = (2 << 14) / sampling_freq

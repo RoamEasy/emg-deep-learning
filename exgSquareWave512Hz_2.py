@@ -34,7 +34,7 @@ exg_16bit = [0x00, 0x00, 0x18]
 * User settable variables *
 ***************************
 '''
-samplingFrequency 	= 1024						# frequency in Hz
+samplingFrequency 	= 512						# frequency in Hz
 exgRes_24bit 		= True						# 24bit if True, else 16bit
 exgGainValue 		= exgconfigGain['GAIN_1'] 	# sets a gain of 1
 
@@ -98,7 +98,7 @@ def wait_for_ack():
       ddata = ser.read(1)
    return
 
-def setSamplingRateHz(rate=1024):
+def setSamplingRateHz(rate=512):
 	# send the set sampling rate command
 	sampling_freq = rate #Hz
 	clock_wait = (2 << 14) / sampling_freq
