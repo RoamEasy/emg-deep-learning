@@ -446,6 +446,7 @@ Section III discusses the experimental setup used to capture, analyze and model 
 Section IV will discuss the results from our analysis and compare that to other work.
 Section V will conclude with discussions about our work and review future possibilities.
 
+
 \section{Related Work}
 The research conducted using EMG to predict speech for SSI systems has been going
 on for over two decades. Before machine learning became very popular, using
@@ -461,37 +462,18 @@ One of the earliest attempts to use EMG to predict speech was done in
 ~\cite{maier-hein_session_2005}. The goal was to predict isolated word recognition,
 which was performed on a vocabulary consisting of the ten English digits, "zero" to
 "nine". Seven electrodes were positioned on the face to extract bio-signals from the
-subjects. Hidden Markov Models (HMM) with Gaussian Mixture Models  were used as
-classifiers. The study was able to get an average word accuracy of 97.3\%.
+subjects. Hidden Markov Models (HMM) with Gausiann Mixture Models  were used as
+classifiers. The study was able to get an average word accuracy of 97.3\%
 
 In ~\cite{wand_pattern_2014}, newer machine learning models were introduced, such as
 Restricted Boltzmann Machine algorithms. Their corpus consisted of 25 sessions from
 20 speakers comprising of 200 read English-language utterances such, as phones,
 consonants, and vowels. In the results, the vowel features achieved relatively low
-ac curacies (around 40\%).
+accuracies (around 40\%)
 
 The work performed by ~\cite{janke_emg--speech:_2017} carried over some of the primary
 research done by ~\cite{wand_pattern_2014}. This research focused on using modern
-Deep Learning techniques such as Long Short Term Memory (LSTM) and comparing it with
-GMM. Their results showed that LSTM models performed better than that of GMM, with a
-mean MCD score of 5.46 versus 5.69, where MCD is a measure of distance, and lower numbers
-represent better results. 
-
-In ~\cite{kapur_alterego:_2018} built a proof of concept SSI system that uses 
-a one-dimensional Convolutional Neural Network (CNN) as a classifier. Seven electrodes 
-where placed around the throat face. In their quantitative results they got an average accuracy over 
-all runs for all the users of 92.01\%. Their corpus included individual words, and short
-phrases. 
-
-Finally, ~\cite{noauthor_classify_nodate} uses latest methods to classify ECG signals by 
-converting the bio-signals to scalograms and passing them through CNN models. This method is used 
-to predict irregular heartbeats. Similar techniques can be adopted using this method for EMG 
-bio-signals.
-
-The number of electrodes and bipolar channels are far greater in ~\cite{kapur_alterego:_2018}, 
-~\cite{wand_pattern_2014}, ~\cite{janke_emg--speech:_2017}, ~\cite{maier-hein_session_2005} than compared to our research, where we are only using three channels. This number was based on 
-~\cite{maier-hein_session_2005} which stated, EMG based speech processing requires the very least signals from the cheek area and the throat. Our research will attempt to reproduce existingwork for LSTM models and One-Dimensional Constitutional Neural Networks. We will then attempt to experiment with similar techniques presented in ~\cite{noauthor_classify_nodate} for ECG signals, but using it for EMG signals to predict speech.
-
+Deep Learning techniques such as Long Short Term Memory (LSTM)
 %\subsubsection{Subsubsection Heading Here}
 %Subsubsection text here.
 
@@ -581,8 +563,9 @@ The number of electrodes and bipolar channels are far greater in ~\cite{kapur_al
 
 
 
-%\section{Conclusion}
-%The conclusion goes here.
+
+a\section{Conclusion}
+The conclusion goes here.
 
 
 % conference papers do not normally have an appendix
@@ -592,11 +575,7 @@ The number of electrodes and bipolar channels are far greater in ~\cite{kapur_al
 %\section*{Acknowledgment}
 
 
-<<<<<<< HEAD
 %The authors would like to thank.....
-=======
-The authors would like to thank.....
->>>>>>> 613314668fcfbde8ccfd1e17d775693dae4ae43a
 
 
 
