@@ -386,7 +386,7 @@ recognition system using Electromyography (EMG) and Deep Learning.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Deep Leanring, Electromyography, Silent Speech Interfaces, Human Computer Interfaces
+Deep Learning, Electromyography, Silent Speech Interfaces, Human Computer Interfaces
 \end{IEEEkeywords}
 
 
@@ -513,7 +513,7 @@ After the subject is connected to the EMG units with the electrodes in place, th
 \end{figure}
 
 \subsubsection*{Cleaning Data}
-Talk about filtering... 
+Once the data is captured from the subjects, post-procesing of the data can begin. In order to remove the noise from the signals, filters are added after acquiring the data. We assumed that we are capturomg muslce movements below 4 Hz. We also want to eliminate the 60 Hz inteference from the surroundings. First, we appplied a low-pass filter centered at 4 Hz. The filters are ideal and they are designed around a sinc function. After applying a low pass filter, we add a high pass filter of 0.5 Hz, which removes the aliasing and the associated DC offset. The coinciding timestamps of the EMG data with the annotations are mapped together to create an input-ouput replationship, see Fig. \ref{fig: cleaned_signals}
 
 
 \section{Appyling Deep Learning Models}
