@@ -122,28 +122,25 @@
 
 
 
-
-
-
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
+  \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
   % \graphicspath{{../pdf/}{../jpeg/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+  \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \else
   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
   % will default to the driver specified in the system graphics.cfg if no
   % driver is specified.
-  % \usepackage[dvips]{graphicx}
+  \usepackage[dvips]{graphicx}
   % declare the path(s) where your graphic files are
   % \graphicspath{{../eps/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.eps}
+  \DeclareGraphicsExtensions{.eps}
 \fi
 % graphicx was written by David Carlisle and Sebastian Rahtz. It is
 % required if you want graphics, photos, etc. graphicx.sty is already
@@ -164,9 +161,7 @@
 %
 % You can find documentation about the pdfTeX application at:
 % http://www.tug.org/applications/pdftex
-
-
-
+\usepackage{lipsum}
 
 
 % *** MATH PACKAGES ***
@@ -233,14 +228,12 @@
 % quality.
 
 
-
-
 % *** SUBFIGURE PACKAGES ***
-%\ifCLASSOPTIONcompsoc
-%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-%\else
-%  \usepackage[caption=false,font=footnotesize]{subfig}
-%\fi
+\ifCLASSOPTIONcompsoc
+  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\else
+  \usepackage[caption=false,font=footnotesize]{subfig}
+\fi
 % subfig.sty, written by Steven Douglas Cochran, is the modern replacement
 % for subfigure.sty, the latter of which is no longer maintained and is
 % incompatible with some LaTeX packages including fixltx2e. However,
@@ -313,7 +306,8 @@
 % Basically, \url{my_url_here}.
 
 
-
+%***CHEMISTRY PACKAGES***%
+\usepackage[version=4]{mhchem}
 
 % *** Do not adjust lengths that control margins, column widths, etc. ***
 % *** Do not use packages that alter fonts (such as pslatex).         ***
@@ -338,10 +332,10 @@
 % use a multiple column layout for up to three different
 % affiliations
 \author{\IEEEauthorblockN{Rommel T. Fernandes}
-\IEEEauthorblockA{Seaver College of Science and Engineering\\
-Loyola Marymount University\\
-Los Angeles, CA 90045\\
-Email: rferna16@lion.lmu.edu}
+\IEEEauthorblockA{\textit{Seaver College of Science and Engineering}\\
+\textit{Loyola Marymount University}\\
+\textit{Los Angeles, CA, USA}\\
+\textit{Email: rferna16@lion.lmu.edu}}
 }
 
 % conference papers do not typically use \thanks and this command
@@ -391,7 +385,9 @@ sub goals required to complete the main objective of building a silent-speech
 recognition system using Electromyography (EMG) and Deep Learning.
 \end{abstract}
 
-% no keywords
+\begin{IEEEkeywords}
+Deep Leanring, Electromyography, Silent Speech Interfaces, Human Computer Interfaces
+\end{IEEEkeywords}
 
 
 % For peer review papers, you can put extra information on the cover
@@ -406,7 +402,7 @@ recognition system using Electromyography (EMG) and Deep Learning.
 
 
 \section{Introduction}
-% no \IEEEPARstart
+%no \IEEEPARstart
 %\subsection{Subsection Heading Here}
 %Subsection text here.
 Over the past few years, HCI has been an increasing field of study. Human Computer
@@ -461,39 +457,74 @@ One of the earliest attempts to use EMG to predict speech was done in
 ~\cite{maier-hein_session_2005}. The goal was to predict isolated word recognition,
 which was performed on a vocabulary consisting of the ten English digits, "zero" to
 "nine". Seven electrodes were positioned on the face to extract bio-signals from the
-subjects. Hidden Markov Models (HMM) with Gaussian Mixture Models  were used as
-classifiers. The study was able to get an average word accuracy of 97.3\%.
+subjects. Hidden Markov Models (HMM) with Gaussian Mixture Models (GMM)  were used as
+classifiers. The study was able to get an average word accuracy of 97.3\%. Our paper 
+differs by ...
 
 In ~\cite{wand_pattern_2014}, newer machine learning models were introduced, such as
 Restricted Boltzmann Machine algorithms. Their corpus consisted of 25 sessions from
 20 speakers comprising of 200 read English-language utterances such, as phones,
 consonants, and vowels. In the results, the vowel features achieved relatively low
-ac curacies (around 40\%).
+ac curacies (around 40\%). Our paper differs by ...
 
 The work performed by ~\cite{janke_emg--speech:_2017} carried over some of the primary
 research done by ~\cite{wand_pattern_2014}. This research focused on using modern
 Deep Learning techniques such as Long Short Term Memory (LSTM) and comparing it with
 GMM. Their results showed that LSTM models performed better than that of GMM, with a
 mean MCD score of 5.46 versus 5.69, where MCD is a measure of distance, and lower numbers
-represent better results.
+represent better results. Our paper differs by ...
 
 In ~\cite{kapur_alterego:_2018} built a proof of concept SSI system that uses
 a one-dimensional Convolutional Neural Network (CNN) as a classifier. Seven electrodes
 where placed around the throat face. In their quantitative results they got an average accuracy over
 all runs for all the users of 92.01\%. Their corpus included individual words, and short
-phrases.
+phrases. Our paper differs by ...
 
 Finally, ~\cite{noauthor_classify_nodate} uses latest methods to classify ECG signals by
 converting the bio-signals to scalograms and passing them through CNN models. This method is used
 to predict irregular heartbeats. Similar techniques can be adopted using this method for EMG
-bio-signals.
+bio-signals. Our paper differs by ...
 
 The number of electrodes and bipolar channels are far greater in ~\cite{kapur_alterego:_2018},
-~\cite{wand_pattern_2014}, ~\cite{janke_emg--speech:_2017}, ~\cite{maier-hein_session_2005} than compared to our research, where we are only using three channels. This number was based on
-~\cite{maier-hein_session_2005} which stated, EMG based speech processing requires the very least signals from the cheek area and the throat. Our research will attempt to reproduce existingwork for LSTM models and One-Dimensional Constitutional Neural Networks. We will then attempt to experiment with similar techniques presented in ~\cite{noauthor_classify_nodate} for ECG signals, but using it for EMG signals to predict speech.
+~\cite{wand_pattern_2014}, ~\cite{janke_emg--speech:_2017}, ~\cite{maier-hein_session_2005} than 
+compared to our research, where we are only using three channels. This number was based on 
+~\cite{maier-hein_session_2005} which stated, EMG based speech processing requires the very 
+least signals from the cheek area and the throat. Our research will attempt to reproduce existingwork 
+for LSTM models and One-Dimensional Constitutional Neural Networks. We will then attempt to 
+experiment with similar techniques presented in ~\cite{noauthor_classify_nodate} for ECG signals, 
+but using it for EMG signals to predict speech.
 
-%\subsubsection{Subsubsection Heading Here}
-%Subsubsection text here.
+
+\section{System Description}
+The system consits of two Shimmer3 EMG units (24 MHz CPU). Each EMG unit has the capablity of recording two channels of data using \ce{Ag/AgCl} bipolar electrodes, with a reference electrode connected to a bone-dense area. The biploar electrodes are placed strategically based on ~\cite{lopez-larraz_syllable-based_2010}. The areas where the EMG electrodes are placed are as follows. \textit{Depressor anguli oris} (EMG1), \textit{Zygomaticus major} (EMG2), and \textit{Anterior belly of the digastric} (EMG3). The reasons of only choosing three EMG channels is to reduce discomfort by the user and abide by the minimum electrode placement ~\cite{maier-hein_session_2005}. Each bipolar electrode of the muslce group is placed approximately 2 cm apart based on the unit specifications, see Fig. \pageref{Fig. 1b}. After proper placement of the electrodes on a subject, the EMG units are placed on the subject's upper torso using comfort straps. The EMG unit transmits data via Bluetooth to a Linux-Ubuntu Intel laptop, which captures the EMG recordings and timestamps. The EMG Unit utilizes open source Python to transmit data to the laptop.
+
+\subsubsection*{Capturing Data}
+After the subject is connected to the EMG units with the electrodes in place, the of process of aquiring EMG data with annotated samples begins. In our experiments we are capturing two types of annotations for a our sample data. Our \textit{first set} of annotations conist of the lables for the words \textit{yes} and \textit{no}. Our \textit{second set} of annotations consit of the labels of the numeric digits \textit{0-9}. The annotations are generated at random using a python script that prints out the label for the subject to read, see Fig.  \ref{Fig. 1a}. The label persists on the screen for two seconds, it is  then followed by the word \textit{relax} which persists for two more seconds. The next label in the annotations is then displayed and repeated for a total of 50 labels per annotated set. The subject performs this task for the \textit{first set} and the \textit{second set}. The associated EMG signals captured with the annotated labels will be used to train the various Deepl Leanring models which will be discussed in a later section. In total, 10 subjects are recruited to volunteer thier data. The entire data, for each set will be split into 80/20 , which will be used for model training and validation respectively. 
+
+\begin{figure} 
+    \centering
+  \subfloat[Annotated labels displayed on screen for subject to read\label{Fig. 1a}]{%
+       \includegraphics[width=0.65\linewidth]{images/annotations.png}}
+    \\
+  \subfloat[Connections to speech-focused muscle groups for EMG data.\label{Fig. 1b}]{%
+        \includegraphics[width=0.65\linewidth]{images/face_leads.jpg}}
+  \caption{Subjects reading rannotated labels on screen while connected to EMG units and electrodes.}
+  \label{fig: conn-ann} 
+\end{figure}
+
+\subsubsection*{Cleaning Data}
+Talk about filtering... 
+
+
+\section{Appyling Deep Learning Models}
+more tesing 
+
+\section{Experimental Results}
+Subsubsection text here.
+
+\section{Discussion}
+
+\section{Conclusion}
 
 
 % An example of a floating figure using the graphicx package.
@@ -509,18 +540,42 @@ The number of electrodes and bipolar channels are far greater in ~\cite{kapur_al
 % option should be used if it is desired that the figures are to be
 % displayed while in draft mode.
 %
-%\begin{figure}[!t]
+%\begin{figure}[!th]
 %\centering
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex,
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
+%\includegraphics[width=2.5in]{myfigure.jpg}
+%%where an .eps filename suffix will be assumed under latex,
+%%and a .pdf suffix will be assumed for pdflatex; or what has been declared
+%%via \DeclareGraphicsExtensions.
 %\caption{Simulation Results.}
 %\label{fig_sim}
 %\end{figure}
 
 % Note that IEEE typically puts floats only at the top, even when this
 % results in a large percentage of a column being occupied by floats.
+
+% Example of figure that shows 4x4 images 
+%\section{A}
+%\lipsum
+
+%\section{B}
+%\lipsum[1-3]
+%\begin{figure} 
+%    \centering
+%  \subfloat[a\label{1a}]{%
+%       \includegraphics[width=0.45\linewidth]{myfigure.jpg}}
+%    \hfill
+%  \subfloat[b\label{1b}]{%
+%        \includegraphics[width=0.45\linewidth]{myfigure.jpg}}
+%    \\
+%  \subfloat[c\label{1c}]{%
+%        \includegraphics[width=0.45\linewidth]{myfigure.jpg}}
+%    \hfill
+%  \subfloat[d\label{1d}]{%
+%        \includegraphics[width=0.45\linewidth]{myfigure.jpg}}
+%  \caption{test.}
+%  \label{fig1} 
+%\end{figure}
+%\lipsum[1-5]
 
 
 % An example of a double column floating figure using two subfigures.
@@ -531,12 +586,12 @@ The number of electrodes and bipolar channels are far greater in ~\cite{kapur_al
 % Watch out that the combined width of all the subfigures on a
 % line do not exceed the text width or a line break will occur.
 %
-%\begin{figure*}[!t]
+%\begin{figure*}[!h]
 %\centering
-%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\subfloat[Case I]{\includegraphics[width=2.5in]{myfigure.jpg}
 %\label{fig_first_case}}
 %\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\subfloat[Case II]{\includegraphics[width=2.5in]{myfigure.jpg}
 %\label{fig_second_case}}
 %\caption{Simulation results.}
 %\label{fig_sim}
