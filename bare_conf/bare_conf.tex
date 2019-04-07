@@ -325,7 +325,7 @@
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
-\title{Using Deep Learning and EMG to predict non-audible speech}
+\title{Using Deep Learning and EMG to recognize non-audible speech}
 
 
 % author names and affiliations
@@ -372,17 +372,11 @@
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-Many post-stroke victims deal with physiological problems such as speech impediments
-due to aphasia. With the advancement of Human-Computer Interface (HCI) research,
-this paper aims to create a project plan based on Silent Speech Interfaces that use
-Deep Learning and Machine Learning to predict non-audible speech. We will first
-briefly introduce HCI systems such as Silent Speech Interfaces, and go over how
-Deep Learning and Machine Learning can be used to predict speech. Next, we will
-go over our project plan that will investigate Deep Learning and Silent Speech
-Interfaces and go over the research problem, which will identify the main goal
-and objectives. Finally, we explain our research plan which will dive into the
-sub goals required to complete the main objective of building a silent-speech
-recognition system using Electromyography (EMG) and Deep Learning.
+Many post-stroke victims deal with physiological problems such as speech impediments due to aphasia. With the advancement of Human-Computer Interface (HCI)
+research, this paper aims to create a project plan based on Silent Speech Interfaces that use Deep Learning and Machine Learning to predict non-audible speech. We will first briefly introduce HCI systems such as Silent Speech Interfaces, and go over how
+Deep Learning and Machine Learning can be used to predict speech. Next, we will go over our project plan that will investigate Deep Learning and Silent Speech
+Interfaces and go over the research problem, which will identify the main goal and objectives. Finally, we explain our research plan which will dive into the
+sub goals required to complete the main objective of building a silent-speech recognition system using Electromyography (EMG) and Deep Learning.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -405,101 +399,74 @@ Deep Learning, Electromyography, Silent Speech Interfaces, Human Computer Interf
 %no \IEEEPARstart
 %\subsection{Subsection Heading Here}
 %Subsection text here.
-Over the past few years, HCI has been an increasing field of study. Human Computer
-Interaction can be described a as feedback loop between a human and computing interface.
-With the increased usage of sensors worn on humans, such as watches, heart rate monitors,
-and other smart sensors, researchers are trying to extract bio-signal information and classify
-typical human activities. One of the ways HCI is used is for Silent Speech Interfaces
-(SSI). SSI aims to use signal extracting systems like electromyography (EMG) and
-electroencephalography (EEG) to convert signals of silent or non-audible speech
-and use a machine to classify the results. This feedback loop involves feature
-extraction, model training, and activity inference ~\cite{lukas_masuch_deep_nodate}.
+Over the past few years, HCI has been an increasing field of study. Human Computer Interaction can be described as a feedback loop between a human and and a computer. With the increased usage of sensors worn on humans, such as watches, heart rate monitors, and other smart sensors, researchers are trying to extract bio-signal information and classify typical human activities. One of the ways HCI is used is for Silent Speech Interfaces (SSI). SSI aims to use signal extracting systems like electromyography (EMG) and
+electroencephalography (EEG) to convert signals of silent or non-audible speech and use a machine to classify the results. This feedback loop involves feature extraction, model training, and activity inference ~\cite{lukas_masuch_deep_nodate}.
 
-This paper is motivated by recent work done that uses machine learning
-and biosignals such as electrocardiogram (ECG) to detect irregular heartbeats
-~\cite{noauthor_classify_nodate}, electroencephalography (EEG) ~\cite{eltvik_deep_nodate}
-and EMG ~\cite{altamirano_emg_nodate}, to predict movements associted with the human body.
-As the field of Deep Learning continues to expand, bio-signals from the human body
-will continue to be used to help improve the lives of people who have trouble
-with daily tasks, such as walking and communicating.
+This paper is motivated by recent work that uses machine learning and  electrocardiogram (ECG) to detect irregular heartbeats 						
+~\cite{noauthor_classify_nodate} and electroencephalography (EEG) ~\cite{eltvik_deep_nodate}
+and EMG ~\cite{altamirano_emg_nodate}, to predict body movements. As the field of Deep Learning continues to expand, bio-signals from the human body
+will continue to be used to help improve the lives of people who have trouble with daily tasks, such as walking and communicating.
 
-For the purpose of this research, non-audible speech can be classified as the
-inability to verbalize words or sentences through the use of sound in an effective way.
-SSI systems are not new; they have been proposed in the past. What’s new is the
-computing resources and type of algorithms used to classify speech in SSI systems.
-In the past, machine learning algorithms such as decision tree, support vector
-machine, Naïve Bayes, and hidden Markov models were used as classifiers for speech.
-Though powerful, they require extensive feature extraction from EMG signals.
-Typically, with traditional feature extraction, only shallow features can be learned from those
-approaches, leading to undermined performance. Recently, we have witnessed the
-incremental development of Deep Learning, which alleviates the issue of feature engineering,
-since the models extract valuable information through several iterations. Therefore,
-using EMG signals to classify non-verbal speech does not have to a be a laborious task.
+For the purpose of this research, non-audible speech can be classified as the inability to verbalize words or sentences through the use of sound in an effective way. SSI systems are not new; they have been proposed in the past. What’s new is the computing resources and type of algorithms used to classify speech in SSI systems. In the past, machine learning algorithms such as decision tree, support vector machine, Naïve Bayes, and hidden Markov models were used as classifiers for speech. Though powerful, they require extensive feature extraction from EMG signals. Typically, with traditional machine learning , only shallow features can be learned from those approaches, leading to undermined performance. Recently, we have witnessed the incremental development of Deep Learning, which alleviates the issue of feature engineering,
+since the models extract valuable information through several iterations. Therefore, using EMG signals to classify non-verbal speech does not have to a be a laborious task.
 
-The rest of this paper will discuss the research problem we are trying to achieve.
 The paper is organized as follows. Section II discusses the related work to the problem.
 Section III discusses the experimental setup used to capture, analyze and model the data.
-Section IV will discuss the results from our analysis and compare that to other work.
-Section V will conclude with discussions about our work and review future possibilities.
+Section IV will discuss our proposed solution
+Section V will discuss the results from our analysis and compare that to other work. Finally we we will conclude this paper with a disucssion and conclusion.
 
 \section{Related Work}
-The research conducted using EMG to predict speech for SSI systems has been going
-on for over two decades. Before machine learning became very popular, using
+The research conducted using EMG to predict speech for SSI systems has been going on for over two decades. Before machine learning became very popular, using
 EMG to predict speech involved heavy feature extraction of the data, along with
-discrete mathematical modeling. Along the way, there have been well documented results
-that have used a combination of mathematical modeling and deep learning to to predict
-speech using EMG. Some of the research addresses syllable and single word based prediction
+discrete mathematical modeling. Along the way, there have been well documented results that have used a combination of mathematical modeling and deep learning to to predict speech using EMG. Some of the research addresses syllable and single word based prediction
 ~\cite{lopez-larraz_syllable-based_2010}, ~\cite{maier-hein_session_2005}. Other research
 has addressed using EMG to predict entire phrases ~\cite{janke_emg--speech:_2017},
 ~\cite{kapur_alterego:_2018}.
 
-One of the earliest attempts to use EMG to predict speech was done in
-~\cite{maier-hein_session_2005}. The goal was to predict isolated word recognition,
-which was performed on a vocabulary consisting of the ten English digits, "zero" to
-"nine". Seven electrodes were positioned on the face to extract bio-signals from the
-subjects. Hidden Markov Models (HMM) with Gaussian Mixture Models (GMM)  were used as
-classifiers. The study was able to get an average word accuracy of 97.3\%. Our paper 
-differs by ...
+One of the earliest attempts to use EMG to predict speech was done in ~\cite{maier-hein_session_2005}. The goal was to predict isolated word recognition,
+which was performed on a vocabulary consisting of the ten English digits, \textit{0-9}. Seven electrodes were positioned on the face to extract bio-signals from the subjects. Hidden Markov Models (HMM) with Gaussian Mixture Models (GMM)  were used as
+classifiers. The study was able to get an average word accuracy of 97.3\%. 
 
 In ~\cite{wand_pattern_2014}, newer machine learning models were introduced, such as
 Restricted Boltzmann Machine algorithms. Their corpus consisted of 25 sessions from
 20 speakers comprising of 200 read English-language utterances such, as phones,
 consonants, and vowels. In the results, the vowel features achieved relatively low
-ac curacies (around 40\%). Our paper differs by ...
+ac curacies (around 40\%).
 
 The work performed by ~\cite{janke_emg--speech:_2017} carried over some of the primary
 research done by ~\cite{wand_pattern_2014}. This research focused on using modern
 Deep Learning techniques such as Long Short Term Memory (LSTM) and comparing it with
 GMM. Their results showed that LSTM models performed better than that of GMM, with a
 mean MCD score of 5.46 versus 5.69, where MCD is a measure of distance, and lower numbers
-represent better results. Our paper differs by ...
+represent better results. 
 
 In ~\cite{kapur_alterego:_2018} built a proof of concept SSI system that uses
 a one-dimensional Convolutional Neural Network (CNN) as a classifier. Seven electrodes
 where placed around the throat face. In their quantitative results they got an average accuracy over
 all runs for all the users of 92.01\%. Their corpus included individual words, and short
-phrases. Our paper differs by ...
+phrases.
 
 Finally, ~\cite{noauthor_classify_nodate} uses latest methods to classify ECG signals by
 converting the bio-signals to scalograms and passing them through CNN models. This method is used
 to predict irregular heartbeats. Similar techniques can be adopted using this method for EMG
-bio-signals. Our paper differs by ...
+bio-signals. 
 
 The number of electrodes and bipolar channels are far greater in ~\cite{kapur_alterego:_2018},
 ~\cite{wand_pattern_2014}, ~\cite{janke_emg--speech:_2017}, ~\cite{maier-hein_session_2005} than 
 compared to our research, where we are only using three channels. This number was based on 
 ~\cite{maier-hein_session_2005} which stated, EMG based speech processing requires the very 
-least signals from the cheek area and the throat. Our research will attempt to reproduce existingwork 
+least signals from the cheek area and the throat. Our research will attempt to reproduce existing work 
 for LSTM models and One-Dimensional Constitutional Neural Networks. We will then attempt to 
 experiment with similar techniques presented in ~\cite{noauthor_classify_nodate} for ECG signals, 
 but using it for EMG signals to predict speech.
 
 
 \section{System Description}
-The system consits of two Shimmer3 EMG units (24 MHz CPU). Each EMG unit has the capablity of recording two channels of data using \ce{Ag/AgCl} bipolar electrodes, with a reference electrode connected to a bone-dense area. The biploar electrodes are placed strategically based on ~\cite{lopez-larraz_syllable-based_2010}. The areas where the EMG electrodes are placed are as follows. \textit{Depressor anguli oris} (EMG1), \textit{Zygomaticus major} (EMG2), and \textit{Anterior belly of the digastric} (EMG3). The reasons of only choosing three EMG channels is to reduce discomfort by the user and abide by the minimum electrode placement ~\cite{maier-hein_session_2005}. Each bipolar electrode of the muslce group is placed approximately 2 cm apart based on the unit specifications, see Fig. \pageref{Fig. 1b}. After proper placement of the electrodes on a subject, the EMG units are placed on the subject's upper torso using comfort straps. The EMG unit transmits data via Bluetooth to a Linux-Ubuntu Intel laptop, which captures the EMG recordings and timestamps. The EMG Unit utilizes open source Python to transmit data to the laptop.
+The system consists of two Shimmer3 EMG units (24 MHz CPU). Each EMG unit has the capability of recording two channels of data using \ce{Ag/AgCl} bipolar electrodes, with a reference electrode connected to a bone-dense area. The bipolar electrodes are placed strategically based on ~\cite{lopez-larraz_syllable-based_2010}. The areas where the EMG electrodes are placed are as follows. \textit{Depressor anguli oris} (EMG1), \textit{Zygomaticus major} (EMG2), and \textit{Anterior belly of the digastric} (EMG3). The reasons of only choosing three EMG channels is to reduce discomfort by the user and abide by the minimum electrode placement ~\cite{maier-hein_session_2005}. Each bipolar electrode of the muscle group is placed approximately 2 cm apart based on the unit specifications (\figurename \ref{Fig. 1b}). After proper placement of the electrodes on a subject, the EMG units are placed on the subject's upper torso using comfort straps. The EMG unit transmits data via Bluetooth to a Linux-Ubuntu Intel laptop, which captures the EMG recordings and timestamps. The EMG Unit utilizes open source Python to transmit data to the laptop.
 
 \subsubsection*{Capturing Data}
-After the subject is connected to the EMG units with the electrodes in place, the of process of aquiring EMG data with annotated samples begins. In our experiments we are capturing two types of annotations for a our sample data. Our \textit{first set} of annotations conist of the lables for the words \textit{yes} and \textit{no}. Our \textit{second set} of annotations consit of the labels of the numeric digits \textit{0-9}. The annotations are generated at random using a python script that prints out the label for the subject to read, see Fig.  \ref{Fig. 1a}. The label persists on the screen for two seconds, it is  then followed by the word \textit{relax} which persists for two more seconds. The next label in the annotations is then displayed and repeated for a total of 50 labels per annotated set. The subject performs this task for the \textit{first set} and the \textit{second set}. The associated EMG signals captured with the annotated labels will be used to train the various Deepl Leanring models which will be discussed in a later section. In total, 10 subjects are recruited to volunteer thier data. The entire data, for each set will be split into 80/20 , which will be used for model training and validation respectively. 
+After the subject is connected to the EMG units with the electrodes in place, the of process of acquiring EMG data with annotated samples begins. In our experiments we are capturing two types of annotations for a our sample data. Our \textit{first set} of annotations consist of the labels for the words \textit{yes} and \textit{no}. Our \textit{second set} of annotations consit of the labels of the numeric digits \textit{0-9}. The annotations are generated at random using a python script that prints out the label for the subject to read  (\figurename \ref{Fig. 1a}). The label persists on the screen for two seconds, it is  then followed by the word \textit{relax} which persists for two more seconds. The next label in the annotations is then displayed and repeated for a total of 50 labels per annotated set. The subject performs this task for the \textit{first set} and the \textit{second set}. The associated EMG signals captured with the annotated labels will be used to train the various Deep Learning models which will be discussed in a later section. In total, 10 subjects are recruited to volunteer their data. The entire data, for each set will be split into 80/20 , which will be used for model training and validation respectively. 
+
 
 \begin{figure} 
     \centering
@@ -513,16 +480,26 @@ After the subject is connected to the EMG units with the electrodes in place, th
 \end{figure}
 
 \subsubsection*{Cleaning Data}
-Once the data is captured from the subjects, post-procesing of the data can begin. In order to remove the noise from the signals, filters are added after acquiring the data. We assumed that we are capturomg muslce movements below 4 Hz. We also want to eliminate the 60 Hz inteference from the surroundings. First, we appplied a low-pass filter centered at 4 Hz. The filters are ideal and they are designed around a sinc function. After applying a low pass filter, we add a high pass filter of 0.5 Hz, which removes the aliasing and the associated DC offset. The coinciding timestamps of the EMG data with the annotations are mapped together to create an input-ouput replationship, see Fig. \ref{fig: cleaned_signals}
+Once the data is captured from the subjects, post processing of the data can begin. In order to remove the noise from the signals, filters are added after acquiring the data. We assumed that we are capturing muscle movements below 4 Hz. We also want to eliminate the 60 Hz interference from the surroundings. First, we applied a low-pass filter centered at 4 Hz. The filters are ideal and designed around a sinc function. After applying a low pass filter, we add a high pass filter of 0.5 Hz, which removes the aliasing and the associated DC offset. The coinciding timestamps of the EMG data with the annotations are mapped together to create an input-output relationship (\figurename \ref{fig: cleaned_signals}).
 
 
-\section{Appyling Deep Learning Models}
-more tesing 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{images/cleaned_signals.png}
+\caption{Signals after cleaning and adding a low pass filter. First Column: EMG1, Second Column: EMG2, Third Column: EMG3,
+Fourth Column: Annotated Labels}
+\label{fig: cleaned_signals}
+\end{figure}
+
+
+\section{Proposed Solution}
+Once the data is cleaned and transformed it will be ready for modeling. We will use the two second window samples of when the subject repeated an annotated label on the screen, and drop the instances where the word \textit{relax} exists. In our first experiment, we will create an LSTM model. The LSTM model will comprise of an Sigmoid activation with a learning rate of \textit{1e-4}. To measure the Loss, we will be using birnary cross-entropy for the binary cases of \textit{yes} and \textit{no}, and categorical cross- entropy for the cases \textit{0-9}. The LSTM model will consist of single LSTM layer followed by a Dense layer. The model will be trained on a google cloud GPU.
 
 \section{Experimental Results}
-Subsubsection text here.
+
 
 \section{Discussion}
+
 
 \section{Conclusion}
 
