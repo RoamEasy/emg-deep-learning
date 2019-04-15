@@ -98,6 +98,29 @@ M.~Wand and T.~Schultz, ``\BIBforeignlanguage{en}{Pattern learning with deep
   \url{https://tomroelandts.com/articles/how-to-create-a-simple-low-pass-filter}
 \BIBentrySTDinterwordspacing
 
+\bibitem{karpathy_visualizing_2016}
+A.~Karpathy, J.~Johnson, and L.~Fei-Fei,
+  ``\BIBforeignlanguage{en}{{VISUALIZING} {AND} {UNDERSTANDING} {RECURRENT}
+  {NETWORKS}},'' p.~11, 2016.
+
+\bibitem{graves_speech_2013}
+\BIBentryALTinterwordspacing
+A.~Graves, A.-r. Mohamed, and G.~Hinton, ``\BIBforeignlanguage{en}{Speech
+  {Recognition} with {Deep} {Recurrent} {Neural} {Networks}},''
+  \emph{\BIBforeignlanguage{en}{arXiv:1303.5778 [cs]}}, Mar. 2013, arXiv:
+  1303.5778. [Online]. Available: \url{http://arxiv.org/abs/1303.5778}
+\BIBentrySTDinterwordspacing
+
+\bibitem{noauthor_cs231n_nodate}
+\BIBentryALTinterwordspacing
+``{CS}231n {Convolutional} {Neural} {Networks} for {Visual} {Recognition}.''
+  [Online]. Available: \url{http://cs231n.github.io/convolutional-networks/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{pauk_419._2008}
+J.~Pauk, ``\BIBforeignlanguage{en}{419. {Different} techniques for {EMG} signal
+  processing},'' vol.~10, no.~4, p.~7, 2008.
+
 \bibitem{admin_guide_2018}
 \BIBentryALTinterwordspacing
 {admin}, ``\BIBforeignlanguage{nl}{A guide for using the {Wavelet} {Transform}
