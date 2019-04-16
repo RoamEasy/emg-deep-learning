@@ -475,18 +475,35 @@ For our second experiment, we used the method of CNN as a deep learning model. W
 \sisetup{table-format=2.2} 
 \begin{table}[!th]
 \centering
+\caption{LSTM Model Results}
+\label{Table. 1a}
 \begin{tabular}{|c|l|S|S|S|S|}           \hline 
-\multirow{2}{*}{\# of class} &\multirow{2}{*}{type}    & \multicolumn{2}{c|}{Trained Data}    &\multicolumn{2}{c|}{New Data}                    \\   \cline{3-6}
+\multirow{2}{*}{\# of class} &\multirow{2}{*}{type}    & \multicolumn{2}{c|}{Trained Data}    &\multicolumn{2}{c|}{Test Data}                    \\   \cline{3-6}
  &  &{Prec.} & {Rec.} & {Prec.}  & {Rec.}              \\   \hline 
-\multirow{5}{*}{5} & car& 81.8 &73.1 & 73.8   & 46.3   \\   \cline{2-6}  
- & plane & 88.3 & 80.7 & 81.1   & 72.5                 \\   \cline{2-6} 
- & camera & 98.1 & 96.4 & 95.2   &  87                 \\   \cline{2-6} 
- & cup & 42.2 & 37.5 & 31   &   22.6                   \\   \cline{2-6} 
- & landscape & 71.7 & 44.9 & 67.9   & 54.3             \\   \hline 
- \multicolumn{2}{|c|}{Average}   & 76.42 & 66.52 &69.8 & 56.54 \\ \hline 
+\multirow{2}{*}{2} & no & 62.0 & 62.0 & 70.0  & 64.0   \\   \cline{2-6}  
+ & yes & 61.0 & 61.0 & 62.0   & 68.0                \\   \hline
+ \multicolumn{2}{|c|}{Average}   & 61.5 & 61.5 & 66.0 & 66.0 \\ \hline 
  \end{tabular}     
- \caption{An important table} 
- \end{table}
+ %\caption{An important table}\label{Table. 1a}
+ \label{Table 1: LSTM} 
+\end{table}
+ 
+\sisetup{table-format=2.2} 
+\begin{table}[!th]
+\centering
+\caption{CWT-CNN Model Results }
+\label{Table. 2a}
+\begin{tabular}{|c|l|S|S|S|S|}           \hline 
+\multirow{2}{*}{\# of class} &\multirow{2}{*}{type}    & \multicolumn{2}{c|}{Trained Data}    &\multicolumn{2}{c|}{Test Data}                    \\   \cline{3-6}
+ &  &{Prec.} & {Rec.} & {Prec.}  & {Rec.}              \\   \hline 
+\multirow{2}{*}{2} & no & 62.0 & 62.0 & 70.0  & 64.0   \\   \cline{2-6}  
+ & yes & 61.0 & 61.0 & 62.0   & 68.0                \\   \hline
+ \multicolumn{2}{|c|}{Average}   & 61.5 & 61.5 & 66.0 & 66.0 \\ \hline 
+ \end{tabular}     
+ %\caption{An important table}\label{Table. 1a}
+ \label{Table 1: LSTM} 
+\end{table} 
+ 
  
 \section{Discussion}
 
@@ -572,15 +589,15 @@ For our second experiment, we used the method of CNN as a deep learning model. W
 % The \label must come after \caption as always.
 %
 %\begin{table}[!t]
-%% increase table row spacing, adjust to taste
+%%% increase table row spacing, adjust to taste
 %\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
+%% if using array.sty, it might be a good idea to tweak the value of
+%% \extrarowheight as needed to properly center the text within the cells
 %\caption{An Example of a Table}
 %\label{table_example}
 %\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
+%%% Some packages, such as MDW tools, offer better commands for making tables
+%%% than the plain LaTeX2e tabular which is used here.
 %\begin{tabular}{|c||c|}
 %\hline
 %One & Two\\
