@@ -496,17 +496,19 @@ For our second experiment, we used the method of CNN as a deep learning model. W
 \begin{tabular}{|c|l|S|S|S|S|}           \hline 
 \multirow{2}{*}{\# of class} &\multirow{2}{*}{type}    & \multicolumn{2}{c|}{Trained Data}    &\multicolumn{2}{c|}{Test Data}                    \\   \cline{3-6}
  &  &{Prec.} & {Rec.} & {Prec.}  & {Rec.}              \\   \hline 
-\multirow{2}{*}{2} & no & 62.0 & 62.0 & 70.0  & 64.0   \\   \cline{2-6}  
- & yes & 61.0 & 61.0 & 62.0   & 68.0                \\   \hline
- \multicolumn{2}{|c|}{Average}   & 61.5 & 61.5 & 66.0 & 66.0 \\ \hline 
+\multirow{2}{*}{2} & no & na & na & na  & na   \\   \cline{2-6}  
+ & yes & na & na & na   & na                \\   \hline
+ \multicolumn{2}{|c|}{Average}   & na & na & na & na \\ \hline 
  \end{tabular}     
  %\caption{An important table}\label{Table. 1a}
- \label{Table 1: LSTM} 
+ \label{Table 2: } 
 \end{table} 
 
-To evaluate the performance of the models for deep learning, we used precision and recall as identifying factors. In the experiments, recall is the fraction that the model actually predicted correct. Precision is the fraction of the model making a correct positive class classification. 
-Table 1 shows the precision and recall for the LSTM model in our binary classification case.  After 10 epochs of the model, the precision and recall scores for the test data are higher when compared to the training set. The continuous wavelet transform with CNN approach was also trained for 10 epochs.  Currently for the CWT-CNN model, precision and recall scores are harder to evaluate due to the large size of the dataset. 
-In comparison with  ~\cite{kapur_alterego:_2018}, ~\cite{janke_emg--speech:_2017}, who used similar deep learning models in their research, had better accuracy results when compared to our work. A major contributing factor to their increase performance is the abundance of data. In ~\cite{kapur_alterego:_2018}, over 30 hours of training data was captured in order to train the model 
+To evaluate the performance of the models for deep learning, we used precision and recall as identifying factors. In the experiments, recall is the fraction that the model actually predicted correct. Precision is the fraction of the model making a correct positive class classification.
+
+Table 1 shows the precision and recall for the LSTM model in our binary classification case.  After 10 epochs of the model, the precision and recall scores for the test data are higher when compared to the training set. The continuous wavelet transform with CNN approach was also trained for 10 epochs.  Currently for the CWT-CNN model, precision and recall scores are harder to evaluate due to the large size of the dataset.
+
+In comparison with  ~\cite{kapur_alterego:_2018}, ~\cite{janke_emg--speech:_2017}, who used similar deep learning models in their research, thier results achieved better accuracy when compared to our work. A major contributing factor to their increase in performance is the abundance of data that was used in the modeling process. In ~\cite{kapur_alterego:_2018}, over 30 hours of training data was captured in order to train the model.
 
 \section{Discussion}
 
