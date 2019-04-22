@@ -453,8 +453,7 @@ Once the data is captured from the subjects, post processing of the data can beg
 \begin{figure}[!t]
 \centering
 \includegraphics[width=3.5in]{images/cleaned_signals.png}
-\caption{Signals after cleaning and adding a low pass filter. First Column: EMG1, Second Column: EMG2, Third Column: EMG3,
-Fourth Column: Annotated Labels}
+\caption{Signals after cleaning and adding low-pass and high-pass filters. First Column: EMG1, Second Column: EMG2, Third Column: EMG3, Fourth Column: Annotated Labels}
 \label{fig: cleaned_signals}
 \end{figure}
 
@@ -466,14 +465,24 @@ Another deep learning model that we investigated, are \textit{Convolutional Neur
 Unlike fourier transform approaches that only show a signal representation in the frequency domain, wavelet transforms show both time and frequency representations. The wavelet transform of a one-dimensinal signal will have two dimensions. This two-dimentional output is the time-scale image representaion of the signal in the form of a scaleogram. This scaleogram gives information about the dynamic behaviour of the system, similar to that of a distinguishable image. Thefore, the wavelet transform represents a suitable method for the classification of EMG signals ~\cite{pauk_419._2008} by using CNN models, which can automatically detect the class each scaleogram belongs to and classify them accordingly.
 
 \section{Proposed Solution} \label{Proposed Solution}
-Once the data is filtered and transformed it will be ready for modeling. We used the two second window samples of when the subject repeated an annotated label on the screen, and dropped the instances where the word \textit{relax} existed. In our first experiment, we created a LSTM model. The LSTM model is comprised of a Sigmoid activation with a learning rate of \textit{1e-4}. To measure the loss of the model, we used binary cross-entropy for the binary cases of \textit{yes} and \textit{no}, and categorical cross-entropy for the cases \textit{0-9}. The LSTM model consisted of a single LSTM layer followed by a Dense output layer. 
+Once the data is filtered and transformed it will be ready for modeling. We used the two second window samples of when the subject repeated an annotated label on the screen, and dropped the instances where the word \textit{relax} existed. In our first experiment, we experimented with an LSTM model. The LSTM model consisted of a single LSTM layer followed by a Dense output layer. The LSTM model is comprised of commonly used hyper-parameter values, such as a batch size of 32, with a learning rate of \textit{1e-4}. To measure the loss of the model, we used binary cross-entropy for the binary cases of \textit{yes} and \textit{no}, and categorical cross-entropy for the cases \textit{0-9}. We followed a many to one, sequence input architecture for the LSTM. The many to one architecture allows us to map many input sequences, in our case three, to a single output.
 
-For our second experiment, we used the method of CNN as a deep learning model. We converted our singals into wavelet transforms, which generated scalograms that show resolution in the frequency and time-domains ~\cite{admin_guide_2018}. Since there are three EMG channels of data, we created three sclaeograms per annotated label.  We then placed the three scaleograms on top of each other, per annotated label, and created an image representation. The coefficients from the output of the scaleogram is then utilized as features to train the CNN model. All of the models were trained on a Google Cloud Compute Engine with four virtual CPUs, 26 GB memory, and one NVIDIA Tesla K80 Graphics Processing Unit (GPU).
+For our second experiment, we used a CNN architecutre as a deep learning model. We converted our singals into wavelet transforms, which generated scalograms that show resolution in the frequency and time-domains ~\cite{admin_guide_2018}. Since there are three EMG channels of data, we created three sclaeograms per label, \figurename \ref{fig: wavelet_signals}.  We then placed the three scaleograms on top of each other and created an image representation. The coefficients from the output of the scaleogram is then utilized as features to train the CNN model. The CNN architecture is a two-layer model with a structure that can be represented as conv1-pool1-conv2-pool2-flat-dense-FC. The convolutional layers have a filter size of 3x3, and a max-pooling kernel size of 2x2, with a stride of 2. The hyper-parameters include a learning rate of \textit{1e-4} and batch size of 8. A smaller batch size is due to the fact of the large tensor size of the training data. All of the models were trained on a Google Cloud Compute Engine with four virtual CPUs, 26 GB memory, and one NVIDIA Tesla K80 Graphics Processing Unit (GPU).
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=3.5in]{images/wavelet_signal.png}
+\caption{Continuous wavelet transform for each EMG channel as inputs, which maps to the labeled output.}
+\label{fig: wavelet_signals}
+\end{figure}
+
 
 \section{Experimental Results}
 
+To evaluate the performance of the deep learning models, we used precision and recall as identifying factors. In the experiments, recall is the fraction that the model actually predicted correct. Precision is the fraction of the model making a correct positive class classification.
+
 \sisetup{table-format=2.2} 
-\begin{table}[!th]
+\begin{table}[!h]
 \centering
 \caption{LSTM Model Results}
 \label{Table. 1a}
@@ -489,7 +498,7 @@ For our second experiment, we used the method of CNN as a deep learning model. W
 \end{table}
  
 \sisetup{table-format=2.2} 
-\begin{table}[!th]
+\begin{table}[!h]
 \centering
 \caption{CWT-CNN Model Results }
 \label{Table. 2a}
@@ -502,11 +511,9 @@ For our second experiment, we used the method of CNN as a deep learning model. W
  \end{tabular}     
  %\caption{An important table}\label{Table. 1a}
  \label{Table 2: } 
-\end{table} 
+\end{table}
 
-To evaluate the performance of the models for deep learning, we used precision and recall as identifying factors. In the experiments, recall is the fraction that the model actually predicted correct. Precision is the fraction of the model making a correct positive class classification.
-
-Table 1 shows the precision and recall for the LSTM model in our binary classification case.  After 10 epochs of the model, the precision and recall scores for the test data are higher when compared to the training set. The continuous wavelet transform with CNN approach was also trained for 10 epochs.  Currently for the CWT-CNN model, precision and recall scores are harder to evaluate due to the large size of the dataset.
+Table 1 shows the precision and recall for the LSTM model in our binary classification case.  After 10 epochs, the precision and recall scores for the test data are higher when compared to the training set. The continuous wavelet transform with CNN approach was also trained for 10 epochs. Currently for the CWT-CNN model, precision and recall scores are harder to evaluate due to the large size of the data-set.
 
 In comparison with  ~\cite{kapur_alterego:_2018}, ~\cite{janke_emg--speech:_2017}, who used similar deep learning models in their research, thier results achieved better accuracy when compared to our work. A major contributing factor to their increase in performance is the abundance of data that was used in the modeling process. In ~\cite{kapur_alterego:_2018}, over 30 hours of training data was captured in order to train the model.
 
