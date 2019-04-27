@@ -4,6 +4,7 @@ Database file #1: first_draft.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in wang_deep_2017
 Warning--empty journal in eltvik_deep_nodate
 Warning--empty year in eltvik_deep_nodate
 Warning--empty journal in altamirano_emg_nodate
@@ -12,4 +13,4 @@ Warning--empty journal in karpathy_visualizing_2016
 Warning--empty journal in pauk_419._2008
 
 Done.
-(There were 6 warnings)
+(There were 7 warnings)

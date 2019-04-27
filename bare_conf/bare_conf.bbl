@@ -21,11 +21,11 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{lukas_masuch_deep_nodate}
+\bibitem{wang_deep_2017}
 \BIBentryALTinterwordspacing
-L.~Masuch, ``Deep {Learning} - {The} {Past}, {Present} and {Future} of
-  {Artificial} {Intelligen}….'' [Online]. Available:
-  \url{https://www.slideshare.net/LuMa921/deep-learning-the-past-present-and-future-of-artificial-intelligence?ref=https://www.analyticsindiamag.com/popular-presentations-on-artificial-intelligence-and-machine-learning/}
+J.~Wang, Y.~Chen, S.~Hao, X.~Peng, and L.~Hu, ``\BIBforeignlanguage{en}{Deep
+  {Learning} for {Sensor}-based {Activity} {Recognition}: {A} {Survey}},'' Jul.
+  2017. [Online]. Available: \url{https://arxiv.org/abs/1707.03502v2}
 \BIBentrySTDinterwordspacing
 
 \bibitem{noauthor_classify_nodate}
