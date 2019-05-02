@@ -128,4 +128,13 @@ J.~Pauk, ``\BIBforeignlanguage{en}{419. {Different} techniques for {EMG} signal
   \url{http://ataspinar.com/2018/12/21/a-guide-for-using-the-wavelet-transform-in-machine-learning/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{ferdoush_wireless_2014}
+\BIBentryALTinterwordspacing
+S.~Ferdoush and X.~Li, ``Wireless {Sensor} {Network} {System} {Design} {Using}
+  {Raspberry} {Pi} and {Arduino} for {Environmental} {Monitoring}
+  {Applications},'' \emph{Procedia Computer Science}, vol.~34, pp. 103--110,
+  Jan. 2014. [Online]. Available:
+  \url{http://www.sciencedirect.com/science/article/pii/S1877050914009144}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
