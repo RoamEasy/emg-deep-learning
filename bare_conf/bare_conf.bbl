@@ -91,6 +91,12 @@ M.~Wand and T.~Schultz, ``\BIBforeignlanguage{en}{Pattern learning with deep
   \url{http://ieeexplore.ieee.org/document/6944550/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{diener_session-independent_nodate}
+L.~Diener, G.~Felsch, M.~Angrick, and T.~Schultz,
+  ``\BIBforeignlanguage{en}{Session-{Independent} {Array}-{Based}
+  {EMG}-to-{Speech} {Conversion} using {Convolu}- tional {Neural}
+  {Networks}},'' p.~5.
+
 \bibitem{noauthor_how_nodate}
 \BIBentryALTinterwordspacing
 ``How to {Create} a {Simple} {Low}-{Pass} {Filter} - {TomRoelandts}.com.''
@@ -115,6 +121,15 @@ A.~Graves, A.-r. Mohamed, and G.~Hinton, ``\BIBforeignlanguage{en}{Speech
 \BIBentryALTinterwordspacing
 ``{CS}231n {Convolutional} {Neural} {Networks} for {Visual} {Recognition}.''
   [Online]. Available: \url{http://cs231n.github.io/convolutional-networks/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{huzaifah_comparison_2017}
+\BIBentryALTinterwordspacing
+M.~Huzaifah, ``\BIBforeignlanguage{en}{Comparison of {Time}-{Frequency}
+  {Representations} for {Environmental} {Sound} {Classification} using
+  {Convolutional} {Neural} {Networks}},''
+  \emph{\BIBforeignlanguage{en}{arXiv:1706.07156 [cs]}}, Jun. 2017, arXiv:
+  1706.07156. [Online]. Available: \url{http://arxiv.org/abs/1706.07156}
 \BIBentrySTDinterwordspacing
 
 \bibitem{pauk_419._2008}

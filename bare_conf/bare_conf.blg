@@ -9,8 +9,10 @@ Warning--empty journal in eltvik_deep_nodate
 Warning--empty year in eltvik_deep_nodate
 Warning--empty journal in altamirano_emg_nodate
 Warning--empty year in altamirano_emg_nodate
+Warning--empty journal in diener_session-independent_nodate
+Warning--empty year in diener_session-independent_nodate
 Warning--empty journal in karpathy_visualizing_2016
 Warning--empty journal in pauk_419._2008
 
 Done.
-(There were 7 warnings)
+(There were 9 warnings)
