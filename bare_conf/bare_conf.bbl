@@ -91,6 +91,12 @@ M.~Wand and T.~Schultz, ``\BIBforeignlanguage{en}{Pattern learning with deep
   \url{http://ieeexplore.ieee.org/document/6944550/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{diener_session-independent_nodate}
+L.~Diener, G.~Felsch, M.~Angrick, and T.~Schultz,
+  ``\BIBforeignlanguage{en}{Session-{Independent} {Array}-{Based}
+  {EMG}-to-{Speech} {Conversion} using {Convolu}- tional {Neural}
+  {Networks}},'' p.~5.
+
 \bibitem{noauthor_how_nodate}
 \BIBentryALTinterwordspacing
 ``How to {Create} a {Simple} {Low}-{Pass} {Filter} - {TomRoelandts}.com.''
@@ -117,6 +123,15 @@ A.~Graves, A.-r. Mohamed, and G.~Hinton, ``\BIBforeignlanguage{en}{Speech
   [Online]. Available: \url{http://cs231n.github.io/convolutional-networks/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{huzaifah_comparison_2017}
+\BIBentryALTinterwordspacing
+M.~Huzaifah, ``\BIBforeignlanguage{en}{Comparison of {Time}-{Frequency}
+  {Representations} for {Environmental} {Sound} {Classification} using
+  {Convolutional} {Neural} {Networks}},''
+  \emph{\BIBforeignlanguage{en}{arXiv:1706.07156 [cs]}}, Jun. 2017, arXiv:
+  1706.07156. [Online]. Available: \url{http://arxiv.org/abs/1706.07156}
+\BIBentrySTDinterwordspacing
+
 \bibitem{pauk_419._2008}
 J.~Pauk, ``\BIBforeignlanguage{en}{419. {Different} techniques for {EMG} signal
   processing},'' vol.~10, no.~4, p.~7, 2008.
@@ -126,6 +141,15 @@ J.~Pauk, ``\BIBforeignlanguage{en}{419. {Different} techniques for {EMG} signal
 {admin}, ``\BIBforeignlanguage{nl}{A guide for using the {Wavelet} {Transform}
   in {Machine} {Learning}},'' Dec. 2018. [Online]. Available:
   \url{http://ataspinar.com/2018/12/21/a-guide-for-using-the-wavelet-transform-in-machine-learning/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{ferdoush_wireless_2014}
+\BIBentryALTinterwordspacing
+S.~Ferdoush and X.~Li, ``Wireless {Sensor} {Network} {System} {Design} {Using}
+  {Raspberry} {Pi} and {Arduino} for {Environmental} {Monitoring}
+  {Applications},'' \emph{Procedia Computer Science}, vol.~34, pp. 103--110,
+  Jan. 2014. [Online]. Available:
+  \url{http://www.sciencedirect.com/science/article/pii/S1877050914009144}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}
