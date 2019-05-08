@@ -136,10 +136,10 @@ M.~Huzaifah, ``\BIBforeignlanguage{en}{Comparison of {Time}-{Frequency}
 J.~Pauk, ``\BIBforeignlanguage{en}{419. {Different} techniques for {EMG} signal
   processing},'' vol.~10, no.~4, p.~7, 2008.
 
-\bibitem{admin_guide_2018}
+\bibitem{wletCNN}
 \BIBentryALTinterwordspacing
-{admin}, ``\BIBforeignlanguage{nl}{A guide for using the {Wavelet} {Transform}
-  in {Machine} {Learning}},'' Dec. 2018. [Online]. Available:
+A.~Taspinar. (2018) A guide for using the wavelet transform in machine
+  learning. [Online]. Available:
   \url{http://ataspinar.com/2018/12/21/a-guide-for-using-the-wavelet-transform-in-machine-learning/}
 \BIBentrySTDinterwordspacing
 
