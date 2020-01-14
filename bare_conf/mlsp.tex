@@ -1,0 +1,303 @@
+% Template for ICASSP-2010 paper; to be used with:
+%          mlspconf.sty  - ICASSP/ICIP LaTeX style file adapted for MLSP, and
+%          IEEEbib.bst - IEEE bibliography style file.
+% --------------------------------------------------------------------------
+\documentclass{article}
+\usepackage{amsmath,graphicx, spconf}
+
+%***CHEMISTRY PACKAGES***%
+\usepackage[version=4]{mhchem}
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{cite}
+
+%% *** SUBFIGURE PACKAGES ***
+%\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage[caption=false,font=footnotesize]{subfig}
+
+\usepackage{lipsum}
+
+\usepackage{fixltx2e}
+
+\usepackage{multirow,siunitx}
+
+\toappear{2019 IEEE International Workshop on Machine Learning for Signal Processing, Oct.\ 13--16, 2019, Pittsburgh, PA, USA}
+
+% Example definitions.
+% --------------------
+\def\x{{\mathbf x}}
+\def\L{{\cal L}}
+
+% Title.
+% ------
+\title{Non-audible Speech Recognition from EMG signals using Deep Learning}
+%
+% ---------------
+\name{Rommel Fernandes, Lei Huang, Gustavo Vejarano}
+\address{Loyola Marymount University\\
+         Department of Electrical Engineering and Computer Science\\
+         Los Angeles, CA, USA\\
+         rferna16@lion.lmu.edu, lei.huang@lmu.edu, gustavo.vejarano@lmu.edu}
+%
+% For example:
+% ------------
+%\address{School\\
+%	Department\\
+%	Address}
+%
+% Two addresses (uncomment and modify for two-address case).
+% ----------------------------------------------------------
+%\twoauthors{A. Author-one, B. Author-two.}}
+%\address{School A-B\\
+%	     Department A-B\\
+%	     Address A-B}
+%   Email A-B
+%  {C. Author-three, D. Author-four\sthanks{The fourth author performed the work
+%	while at ...}}
+%	{School C-D\\
+%	Department C-D\\
+%	Address C-D
+%   Email C-D}
+%
+\begin{document}
+%\ninept
+%
+\maketitle
+%
+\begin{abstract}
+Many post-stroke victims deal with physiological problems such as speech impediments due to aphasia. With the advancement of Human-Computer Interaction (HCI) research, this paper aims at non-audible speech recognition using Electromyography (EMG) and Deep Learning. We first introduce HCI systems, such as Silent Speech Interfaces and review how deep learning and machine learning can be used for speech recognition. To recognize non-audible speech, we collected facial surface EMG bio-signals from subjects for binary and multi-class labels. We then used popular deep learning techniques, which include Long Short Term Memory (LSTM)'s, and Convolutional Neural Networks (CNN)'s, along with novel signal processing approaches, such as Continuous Wavelet Transforms. We were able to report 76\% precision with binary classifications of non-audible speech. In comparison with previous research,  we gained insights on how to improve our results, for binary and multi-class cases, by adding more training data.
+\end{abstract}
+%
+\begin{keywords}
+Deep Learning, Electromyography, Silent Speech Interfaces, Human-Computer Interaction
+\end{keywords}
+%
+\section{INTRODUCTION}
+\label{sec:INTRODUCTION}
+
+Over the past few years, HCI has been an increasing field of study. HCI can be described as a feedback loop between human and computer. With the increased usage of sensors worn on humans, such as watches, heart rate monitors, and other smart sensors, researchers are trying to extract bio-signal information and classify typical human activities. One of the ways HCI is used is for Silent Speech Interfaces (SSI). SSI aims to use signal-extracting systems like electromyography (EMG) and electroencephalography (EEG) to convert signals of silent or non-audible speech and use a machine to classify the results. This feedback loop involves feature extraction, model training, and activity inference ~\cite{wang_deep_2017}.
+
+This paper is motivated by recent work that uses machine learning and  electrocardiogram (ECG) to detect irregular heartbeats ~\cite{noauthor_classify_nodate} and electroencephalography (EEG) ~\cite{eltvik_deep_nodate} and EMG  ~\cite{altamirano_emg_nodate} to predict body movements. 
+
+For the purpose of this research, non-audible speech can be classified as the inability to verbalize words or sentences through the use of sound in an effective way. SSI systems are not new; what is new is the computing resources and type of algorithms used to classify speech in SSI systems. In the past, machine learning algorithms such as decision tree, support vector machine, Naïve Bayes, and Hidden Markov Models were used as classifiers for speech. Though powerful, they require extensive feature extraction from EMG signals. Typically, with traditional machine learning, only shallow features can be learned from those approaches, leading to undermined performance. Recently, we have witnessed the incremental development of deep learning, which alleviates the issue of feature engineering since the models extract valuable information through several iterations. Therefore, using EMG signals to classify non-audible speech does not have to a be a laborious task.
+
+In comparing other methods to capture non-audible speech, EMG is the most effective in terms of its non-invasiveness, cost, and  silent-usage. Other methods include:  brain computing interfaces such as Electroencephalography (EEG), Near infrared sensors (fNIRS), implants for speech and motor cortex (ECOG), and video camera lip reading. All of these methods have some measure of personal or physical invasiveness, therefore making EMG most ideal for capturing non-audible speech.
+
+The paper is organized as follows. Section II discusses the related work. Section III discusses the experimental setup used to capture, analyze, and model the data. Section IV discusses the specific models being used in our proposed solution. Section V will discuss the proposed solutions. Section VI discusses the results from our analysis and compares them to the related work. Finally, we will conclude this paper with a discussion, future work, and conclusion.
+
+\section{RELATED WORK}
+\label{sec:RELATED WORK}
+
+The research conducted using EMG to predict speech for SSI systems has been going on for over two decades. Before machine learning became very popular, using EMG to recognize speech patterns involved heavy feature extraction of the data, along with discrete mathematical modeling. Recently, there have been well documented results that have used a combination of mathematical modeling and deep learning to predict speech using EMG. Some of the research addresses syllable and single word based prediction ~\cite{lopez-larraz_syllable-based_2010}, ~\cite{maier-hein_session_2005}. Other research has addressed using EMG to predict entire phrases ~\cite{janke_emg--speech:_2017}, ~\cite{kapur_alterego:_2018}.
+
+One of the earliest attempts to use EMG to predict speech was done in ~\cite{maier-hein_session_2005}. The goal was to predict isolated word recognition, which was performed on a vocabulary consisting of the ten English digits \textit{0-9}. Seven electrodes were positioned on the face to extract bio-signals from the subjects. Hidden Markov Models (HMM) with Gaussian Mapping Models (GMM) were used as classifiers. The study was able to get an average word accuracy of 97.3\%. 
+
+In ~\cite{wand_pattern_2014}, new approaches to  machine learning models were introduced, such as Restricted Boltzmann Machine algorithms and Deep Neural Networks (DNN). Their corpus consisted of 25 sessions from 20 speakers comprising of 200 read English-language utterances such as phonemes, consonants, and vowels. Their results showed that DNN models performed better for phoneme related classifications using EMG inputs. 
+
+The work performed by ~\cite{janke_emg--speech:_2017} continued some of the primary research done by ~\cite{wand_pattern_2014}. This research investigated bidirectional LSTMs, and compared it with other models such as GMMs. Their results showed that LSTM models performed better than that of GMM, with a mean Mel-Cepstral Distortion (MCD) score of 5.46 versus 5.69, where MCD is a measure of distance, and lower numbers represent better results.
+
+The work done by ~\cite{diener_session-independent_nodate} used the same data set and corpus of ~\cite{janke_emg--speech:_2017}. Primary work focused on evaluating CNN based for EMG-to-Speech conversations. The researchers used a LeNet inspired architecture to convert sEMG  to mel-frequency cepstral coefficients (MFCCs) for modeling. Their results showed that the Lenet CNN architecture is able to outperform a plain deep neural network based conversation system. 
+
+In ~\cite{kapur_alterego:_2018}, work was done to build a proof of concept SSI system that uses a one-dimensional CNN as a classifier. Seven electrodes were placed around the throat and face.  Subjects in the research do not open their mouth, make any sound, or provide any muscle articulation in order to train the models. Their quantitative results for the one-dimensional CNN network reported an average accuracy of 92.01\% for all subjects. Their corpus included individual words and short phrases.
+
+Finally, the work done in ~\cite{noauthor_classify_nodate} uses the latest methods to classify bio-signals by converting them to scaleograms and processing them through CNN models. The research done in this paper is used to predict irregular heartbeats through ECG signals. Similar approaches for analyzing signals with a dynamical frequency spectrum, such as EMG bio-signals, can be adopted using the same method of wavelet transformations and classification. 
+
+Our paper will attempt to research and contribute the following:
+\begin{itemize}
+  \item Reproduce existing work for LSTM models used for speech recognition. 
+  \item Use similar techniques of wavelet tranforms and CNN, which is presented in\cite{noauthor_classify_nodate} for ECG signals, and apply it to our EMG non-audible speech recognition models. 
+\end{itemize}
+
+\section{SYSTEM DESCRIPTION}
+\label{sec:SYSTEM DESCRIPTION}
+
+The number of electrodes and bipolar channels are far greater in ~\cite{kapur_alterego:_2018}, ~\cite{wand_pattern_2014}, ~\cite{janke_emg--speech:_2017}, ~\cite{maier-hein_session_2005} than compared to our research, where we are only using three channels. This number was based on ~\cite{maier-hein_session_2005}, which stated that EMG based speech processing requires the very least signals from the cheek area and the throat. 
+
+The system consists of two Shimmer3 EMG units, each with a 24 MHz CPU. The EMG units have the capability of recording two channels of data using \ce{Ag/AgCl} bipolar electrodes with a reference electrode connected to a bone-dense area. The bipolar electrodes are placed strategically based on work done in ~\cite{lopez-larraz_syllable-based_2010}. The areas where the EMG electrodes are placed are as follows. \textit{Depressor anguli oris} (EMG1), \textit{Zygomaticus major} (EMG2), and \textit{Anterior belly of the digastric} (EMG3). The reasoning of only choosing three EMG channels is to reduce discomfort by the user and abide by the minimum electrode placement documented by ~\cite{maier-hein_session_2005}. Each bipolar electrode of the muscle group is placed approximately 2 cm apart based on the unit specifications in (\figurename \ref{Fig. 1b}). After proper placement of the electrodes on a subject, the EMG units are placed on the subjects upper torso and shoulder, using comfort straps. The EMG units transmit data via Bluetooth to a Linux (Ubuntu) Intel laptop, which captures the EMG recordings and timestamps. The EMG units utilize open source Python to transmit data to the laptop.
+
+\subsection{Capturing Data}
+\label{ssec:Capturing Data}
+After the subject is connected to the EMG units with the electrodes in place, the process of acquiring EMG data with annotated samples begins. In our experiments, we are capturing two types of labeled annotations for our sample data. Our \textit{first set} of annotations consists of the labels for the words \textit{yes} and \textit{no}. Our \textit{second set} of annotations consists of the labels of the numeric digits \textit{0-9}. The annotations are generated at random using a python script that prints out the label for the subject to read  (\figurename \ref{Fig. 1a}). The label persists on the screen for two seconds; it is then followed by the word \textit{relax}, which persists on the screen for two more seconds. The next label in the annotations is displayed and repeated at random for a total of 50 labels per annotated set. The subject performs this task for the \textit{first set} and \textit{second set}. The associated EMG signals captured with the annotated labels will be used to train the various deep learning models which will be discussed in Section \ref{sec:PROPOSED SOLUTION}. In total, 10 subjects are recruited to volunteer their data. For each set, the data will be split into 80/20 , which will be used for model training and validation respectively. 
+
+\begin{figure}[!b] 
+    \centering
+  \subfloat[Annotated labels displayed on screen for subject to read\label{Fig. 1a}]{%
+       \includegraphics[width=0.65\linewidth]{images/annotations.png}}
+    \\
+  \subfloat[Connections to speech-focused muscle groups for EMG data.\label{Fig. 1b}]{%
+        \includegraphics[width=0.65\linewidth]{images/face_leads.jpg}}
+  \caption{Subjects reading rannotated labels on screen while connected to EMG units and electrodes.}
+  \label{fig: conn-ann} 
+\end{figure}
+
+
+\subsection{Cleaning Data}
+\label{ssec:Cleaning Data}
+Once the data is captured from the subjects, post processing of the data can begin. In order to remove the noise from the signals, filters are added after acquiring the data. We assumed that we are capturing muscle movements below 4 Hz. We also want to eliminate the 60 Hz interference from the surroundings. First, we applied a low-pass filter with a cutoff frequency of 4 Hz. The filters are designed around a window sinc function ~\cite{noauthor_how_nodate}. After applying a low pass filter, we add a high pass filter with a cutoff frequency of 0.5 Hz, which removes the associated DC offset. The coinciding timestamps of the EMG data with the annotations are mapped together to create an input-output relationship. \figurename \ref{fig: cleaned_signals} shows the filtered channels from the EMG with the respective annotated labels. This data will be used for the training and testing of the models. 
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{images/cleaned_signals.png}
+\caption{Signals after cleaning and adding low-pass and high-pass filters. First Column: EMG1, Second Column: EMG2, Third Column: EMG3, Fourth Column: Annotated Labels}
+\label{fig: cleaned_signals}
+\end{figure}
+
+\section{EXPERIMENTAL MODELS}
+\label{sec:EXPERIMENTAL MODELS}
+\textit{Recurrent neural networks} (RNN), in particular LSTMs, are an effective tool for sequence processing that learn hidden representations of their sequential input. An LSTM can use its memory cells to remember long-range information and keep track of various attributes of data it is currently processing ~\cite{karpathy_visualizing_2016}. An LSTM is built from an RNN, which works by unrolling data into N different copies of itself. Input of data from previous time steps $t_{n-1}$, $t_{n-2}$, $t_{n-3}$ \ldots, $t_{0}$ can be used when the current time-step $t_{n}$ is being evaluated. RNNs can learn temporal dependencies in the sequential data, and use it to classify new data. These unique capablities make RNNs and LSTMs ideal for classification of time-series data such as EMG signals. Adding multiple layers to LSTMs can improve results to experiments related to speech recognition, as investigated by ~\cite{graves_speech_2013}. In our experiment, we will use the sequential data from each EMG channel to classify the annotated labels in our data sets.
+
+Another deep learning model that we investigated are \textit{Convolutional Neural Networks}. CNNs are made up of neurons that have learnable weights and biases. Each neuron receives an input and performs a series of matrix operations in order to predict classification scores ~\cite{noauthor_cs231n_nodate}. Most CNN architectures make the assumption that the inputs are images, which allow to encode values as matrices and perform dot product operations.  In order to convert sequential time-series data into image representations, we investigated \textit{Wavelet Transforms}, specifically Continuous Wavelet Transforms (CWT).
+
+Unlike Fourier transform approaches that only show a signal representation in the frequency domain, wavelet transforms show both time and frequency representations. In ~\cite{janke_emg--speech:_2017}, ~\cite{kapur_alterego:_2018}, ~\cite{diener_session-independent_nodate}, they generated mel-frequency cepstral coefficients (MFCC), which creates one-dimensional representation that closely characterizes the envelopes of human speech to use as features in their respective models. In ~\cite{huzaifah_comparison_2017}, however states that time-frequency representations such as the CWT produced better accuracies than the MFCC features. The wavelet transform of a one-dimensional signal will generate coefficients as a two-dimension matrix of time-frequency representations, which is also known as a scaleogram. This scaleogram gives information about the dynamic behavior of the system, similar to that of a distinguishable image. Therefore, the wavelet transform represents a suitable method for the classification of EMG signals ~\cite{pauk_419._2008} by using CNN models ~\cite{huzaifah_comparison_2017}.
+
+\section{PROPOSED SOLUTION}
+\label{sec:PROPOSED SOLUTION}
+
+Once the data is filtered and transformed, it will be ready for modeling. We used the two second window samples of when the subject repeated an annotated label on the screen and dropped the instances where the word \textit{relax} existed. In our first proposed solution, we experimented with an LSTM model. The model is single direction LSTM, similar to ~\cite{janke_emg--speech:_2017},that consists of a LSTM layer with 100 filters followed by a Dense layer of 80 filters, and an output layer. The LSTM model is comprised of commonly used hyper-parameter values, such as a batch size of 32, with a learning rate of \textit{1e-4}. To measure the loss of the model, we used binary cross-entropy for the binary cases of \textit{yes} and \textit{no}, and categorical cross-entropy for the cases \textit{0-9}. We followed a many to one, sequence input architecture for the LSTM. The many to one architecture allows us to map many input sequences, in our case three, to a single output.
+
+For our second experiment, we used a CNN architecutre as a deep learning model. We converted our singals into wavelet transforms, which generated scalograms that show resolution in the frequency and time-domains ~\cite{wletCNN}. Since there are three EMG channels of data, we created three sclaeograms per label, \figurename \ref{fig: wavelet_signals}. We then placed the three scaleograms on top of each other and created an image representation. The coefficients from the output of the scaleogram is then utilized as features to train the CNN model. The CNN architecture, similar to Lenet, is a two-layer model with a structure that can be represented as conv1-pool1-conv2-pool2-flat-dense-FC, with a  0.5 dropout before FC layer. The hidden convolutional layers have a size of 32, 64, and 512 filters respectively. The convolutional layers have a filter size of 3x3, and a max-pooling kernel size of 2x2, with a stride of 2. The hyper-parameters include a learning rate of \textit{1e-4} and batch size of 16. A smaller batch size is due to the fact of the large tensor size of the training data. Finally for the CWT parameters, we choose frequency bin size of 256 and a Mexican hat wavelet function. All of the models were trained on a Google Cloud Compute Engine with four virtual CPUs, 26 GB memory, and one NVIDIA Tesla K80 Graphics Processing Unit (GPU).
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=3.5in]{images/wavelet_signal.png}
+\caption{Continuous wavelet transform for each EMG channel as inputs, which maps to the labeled output.}
+\label{fig: wavelet_signals}
+\end{figure}
+
+\section{EXPERIMENTAL RESULTS}
+\label{sec:EXPERIMENTAL RESULTS}
+To evaluate the performance of the deep learning models, we used precision and recall as identifying factors. In the experiments, recall is the fraction that the model actually predicted correct. Precision is the fraction of the model making a correct positive class classification.
+
+\sisetup{table-format=2.2} 
+\begin{table}[!h]
+\centering
+\caption{LSTM Model Results}
+\begin{tabular}{|c|l|S|S|S|S|}           \hline 
+\multirow{2}{*}{\# of class} &\multirow{2}{*}{type}    & \multicolumn{2}{c|}{Trained Data}    &\multicolumn{2}{c|}{Test Data}                    \\   \cline{3-6}
+ &  &{Prec.} & {Rec.} & {Prec.}  & {Rec.}              \\   \hline 
+\multirow{2}{*}{2} & no & 0.62 & 0.82 & 0.60  & 0.83   \\   \cline{2-6}  
+ & yes & 0.72 & 0.47 & 0.77   & 0.52                \\   \hline
+ \multicolumn{2}{|c|}{Average}   & 0.67 & 0.65 & 0.69 & 0.66 \\ \hline 
+ \end{tabular}     
+ %\caption{An important table}\label{Table. 1a}
+ \label{Table 1: LSTM} 
+\end{table}
+ 
+\sisetup{table-format=2.2} 
+\begin{table}[!h]
+\centering
+\caption{CWT-CNN Model Results }
+\begin{tabular}{|c|l|S|S|S|S|}           \hline 
+\multirow{2}{*}{\# of class} &\multirow{2}{*}{type}    & \multicolumn{2}{c|}{Trained Data}    &\multicolumn{2}{c|}{Test Data}                    \\   \cline{3-6}
+ &  &{Prec.} & {Rec.} & {Prec.}  & {Rec.}              \\   \hline 
+\multirow{2}{*}{2} & no & 0.97 & 0.95 & 0.75  & 0.72   \\   \cline{2-6}  
+ & yes & 0.95 & 0.97 & 0.76   & 0.79                \\   \hline
+ \multicolumn{2}{|c|}{Average}   & 0.96 & 0.96 & 0.76 & 0.76 \\ \hline 
+ \end{tabular}     
+ %\caption{An important table}\label{Table. 1a}
+ \label{Table 2: CWT-CNN} 
+\end{table}
+
+
+\sisetup{table-format=2.2} 
+\begin{table}[!h]
+\centering
+\caption{1D-CNN Model Results}
+\begin{tabular}{|c|l|S|S|S|S|}           \hline 
+\multirow{2}{*}{\# of class} &\multirow{2}{*}{type}    & \multicolumn{2}{c|}{Trained Data}    &\multicolumn{2}{c|}{Test Data}                    \\   \cline{3-6}
+ &  &{Prec.} & {Rec.} & {Prec.}  & {Rec.}              \\   \hline 
+\multirow{2}{*}{2} & no & 0.96 & 0.87 & 0.85  & 0.79   \\   \cline{2-6}  
+ & yes & 0.87 & 0.96 & 0.83   & 0.88                \\   \hline
+ \multicolumn{2}{|c|}{Average}   & 0.92 & 0.91 & 0.84 & 0.84 \\ \hline 
+ \end{tabular}     
+ \label{Table 4: 1D-CNN} 
+\end{table}
+
+
+\sisetup{table-format=2.2} 
+\begin{table}[!t]
+\centering
+\caption{Overall Results}
+\begin{tabular}{|c|l|S|S|S|S|S|S|S|S|S|S|S|S|}           \hline 
+\multirow{2}{*}{\# of class} &\multirow{2}{*}{type}    & \multicolumn{3}{c|}{1-D CNN}    &\multicolumn{3}{c|}{CWT-CNN}  &\multicolumn{3}{c|}{LSTM} &\multicolumn{3}{c|}{BI-LSTM}                   \\   \cline{3-14}
+ &  &{Prec.} & {Rec.} & {F1} &{Prec.} & {Rec.} & {F1} &{Prec.} & {Rec.} & {F1} &{Prec.} & {Rec.} & {F1}             \\   \hline 
+\multirow{2}{*}{2} & no & 0.85 & 0.79 & 0.82  & 0.75 & 0.72 & 0.73 & 0.60 & 0.83 & 0.70 & 0.49 & 0.62 & 0.55 \\   \cline{2-14}  
+ & yes & 0.83 & 0.88 & 0.85  & 0.77 & 0.52 & 0.63 & 0.77 & 0.52 & 0.62 & 0.56 & 0.42 & 0.48         \\   \hline
+ \multicolumn{2}{|c|}{Average}   & 0.84 & 0.84 & 0.84 & 0.76 & 0.76 & 0.68 & 0.69 & 0.66 & 0.66 &  0.53  & 0.52 & 0.51\\ \hline 
+ \end{tabular}     
+ \label{Table 3: Models} 
+\end{table}
+
+
+
+Table \ref{Table 1: LSTM} shows the precision and recall for the LSTM model in our binary classification case. Table \ref{Table 2: CWT-CNN} shows the continuous wavelet transform with the CNN approach. The CWT-CNN model performs significantly better for both training and test data sets when compared to the LSTM model. On average for the binary test cases of \textit{yes} and \textit{no}, the CWT-CNN model had precision score of 82\%, and the LSTM model had a precision score of 61.5\%. For the multi-class test cases of \textit{0-9}, the results were not as favorable with an average precision score around 10\% for both LSTM and CWT-CNN models.
+
+\section{DISCUSSION}
+\label{sec:DISCUSSION}
+
+In comparison with  ~\cite{janke_emg--speech:_2017}, ~\cite{kapur_alterego:_2018}, ~\cite{diener_session-independent_nodate}, who used similar deep learning models, thier results achieved better accuracy when compared to the work in this paper. A  contributing factor to their increase in performance is the amount of data they had available for thier training and testing purposes. In ~\cite{kapur_alterego:_2018}, approximately 31 hours of training data was captured in order to train their one-dimensional CNN model. In ~\cite{janke_emg--speech:_2017}, ~\cite{diener_session-independent_nodate}, who trained a variety of different models, utilized on-going corpus of data from previous research projects that focused on EMG-SSI systems. We have shown for a small data corpus, CNN based models perform better than LSTM models. With additional data, we believe that our models for binary and multi-class labels can be on par with other EMG-SSI systems using deep learning that were researched in this paper.
+
+One of the ways our model differentiates and possibly improves is the use of CWT over MFCC. The MFCC requires windowed sampling in small increments. The output of the MFCC are one-dimensional coefficients, while CWT outputs coefficients in two-dimensions, allowing deep learning models such as CNN to learn and extract more features ~\cite{huzaifah_comparison_2017}. In previous research, MFCC were primary used for shallow learning speech recognition models such as HMM. As deep learning and CNN models continue to gain popularity, the use of mult-dimensional transformation techniques such as CWT will become more prevalent for speech recognition SSI systems. 
+
+The transformation of data, specifically one-dimensional signals to its time-frequency components requires significant processing power. Resource limited systems cannot perform such laborious processes. We trained our models on a cloud computing engine which had the capability of increasing CPU and GPU power. These systems can become costly as the number of dedicated resources are assigned to the task of training a model. One has to justify the efforts of performance versus cost, specifically if the models improvements are only a few percentage. In terms of speech recognition, accuracy is important, the ability recognize speech patterns from a SSI system with high accuracy is a long-term goal.  
+
+% Below is an example of how to insert images. Delete the ``\vspace'' line,
+% uncomment the preceding line ``\centerline...'' and replace ``imageX.ps''
+% with a suitable PostScript file name.
+% -------------------------------------------------------------------------
+
+%\begin{figure}[htb]
+%
+%\begin{minipage}[b]{1.0\linewidth}
+%  \centering
+%  \centerline{\includegraphics[width=8.5cm]{image1}}
+%%  \vspace{2.0cm}
+%  \centerline{(a) Result 1}\medskip
+%\end{minipage}
+%%
+%\begin{minipage}[b]{.48\linewidth}
+%  \centering
+%  \centerline{\includegraphics[width=4.0cm]{image3}}
+%%  \vspace{1.5cm}
+%  \centerline{(b) Results 3}\medskip
+%\end{minipage}
+%\hfill
+%\begin{minipage}[b]{0.48\linewidth}
+%  \centering
+%  \centerline{\includegraphics[width=4.0cm]{image4}}
+%%  \vspace{1.5cm}
+%  \centerline{(c) Result 4}\medskip
+%\end{minipage}
+%%
+%\caption{Example of placing a figure with experimental results.}
+%\label{fig:res}
+%%
+%\end{figure}
+
+% To start a new column (but not a new page) and help balance the last-page
+% column length use \vfill\pagebreak.
+% -------------------------------------------------------------------------
+%\vfill
+%\pagebreak
+
+\section{FUTURE WORK}
+\label{sec:FUTURE WORK}
+
+One of the main ways to improve accuracy in our models is to acquire more training data. Getting subjects to volunteer can at times be challenging, more importantly annotating EMG data with proper labels. Acquiring more data would allow us to also train a variety of words and phrases, so that we can eventually build a robust SSI system. In our model, we eliminated instances where the subject was told to \textit{rest}. Future models should incorporate the \textit{rest} instances as an additional class, so that the model will learn to identify false positives.
+
+The eventual goal is to build an SSI system that can improve its word recognition capablity over time as more data from similar SSI systems relay information over the network; resembling a Wireless Sensor Network and the Internet of Things ~\cite{ferdoush_wireless_2014}. A Bluetooth SSI system would communicate with a base station, process the data through the model, and output the results via an audio or visual interface. As more data is collected, deep learning models would be updated in the cloud, and pushed back to the base stations for processing.
+
+\section{CONCLUSION}
+\label{sec:CONCLUSION}
+
+We have shown by using well-known deep learning methods we can effectively create models to recognize non-audible speech using surface EMG. This type of research is critical in designing SSI systems that can be used to interface with people who suffer from speech related problems. The experiments conducted by gathering data from a small sample of subjects showed that, CNN models tend to perform better than LSTM models, in terms of speed, accuracy, and precision in recognizing non-audible speech. Our approach of CWT with a combination of CNN also led to similar results when compared to previous research; however, the cost of running such model may outweigh the benefits. In the future, finding ways to capture more robust data will be critical in training precise models that can disseminate and recognize a variety of words or phrases for SSI systems.
+
+% References should be produced using the bibtex program from suitable
+% BiBTeX files (here: strings, refs, manuals). The IEEEbib.bst bibliography
+% style file from IEEE produces unsorted bibliography list.
+% -------------------------------------------------------------------------
+\bibliographystyle{IEEEbib}
+\bibliography{first_draft}
+
+\end{document}

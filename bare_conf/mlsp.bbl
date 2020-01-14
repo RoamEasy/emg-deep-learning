@@ -1,0 +1,108 @@
+\begin{thebibliography}{10}
+
+\bibitem{wang_deep_2017}
+Jindong Wang, Yiqiang Chen, Shuji Hao, Xiaohui Peng, and Lisha Hu,
+\newblock ``Deep {Learning} for {Sensor}-based {Activity} {Recognition}: {A}
+  {Survey},''
+\newblock July 2017.
+
+\bibitem{noauthor_classify_nodate}
+``Classify {Time} {Series} {Using} {Wavelet} {Analysis} and {Deep} {Learning} -
+  {MATLAB} \& {Simulink} {Example},'' .
+
+\bibitem{eltvik_deep_nodate}
+Audun Eltvik,
+\newblock ``Deep {Learning} for the {Classification} of {EEG}
+  {Time}-{Frequency} {Representations},''
+\newblock p. 122.
+
+\bibitem{altamirano_emg_nodate}
+Alvaro~Altamirano Altamirano,
+\newblock ``{EMG} {Pattern} {Prediction} for {Upper} {Limb} {Movements} {Based}
+  on {Wavelet} and {Hilbert}-{Huang} {Transform},''
+\newblock p. 134.
+
+\bibitem{lopez-larraz_syllable-based_2010}
+E.~Lopez-Larraz, O.~M. Mozos, J.~M. Antelis, and J.~Minguez,
+\newblock ``Syllable-based speech recognition using {EMG},''
+\newblock in {\em 2010 {Annual} {International} {Conference} of the {IEEE}
+  {Engineering} in {Medicine} and {Biology}}, Aug. 2010, pp. 4699--4702.
+
+\bibitem{maier-hein_session_2005}
+L.~Maier-Hein, F.~Metze, T.~Schultz, and A.~Waibel,
+\newblock ``Session independent non-audible speech recognition using surface
+  electromyography,''
+\newblock in {\em {IEEE} {Workshop} on {Automatic} {Speech} {Recognition} and
+  {Understanding}, 2005.}, San Juan, Puerto Rico, 2005, pp. 331--336, IEEE.
+
+\bibitem{janke_emg--speech:_2017}
+Matthias Janke and Lorenz Diener,
+\newblock ``{EMG}-to-{Speech}: {Direct} {Generation} of {Speech} {From}
+  {Facial} {Electromyographic} {Signals},''
+\newblock {\em IEEE/ACM Transactions on Audio, Speech, and Language
+  Processing}, vol. 25, no. 12, pp. 2375--2385, Dec. 2017.
+
+\bibitem{kapur_alterego:_2018}
+Arnav Kapur, Shreyas Kapur, and Pattie Maes,
+\newblock ``{AlterEgo}: {A} {Personalized} {Wearable} {Silent} {Speech}
+  {Interface},''
+\newblock in {\em Proceedings of the 2018 {Conference} on {Human} {Information}
+  {Interaction}\&{Retrieval} - {IUI} '18}, Tokyo, Japan, 2018, pp. 43--53, ACM
+  Press.
+
+\bibitem{wand_pattern_2014}
+Michael Wand and Tanja Schultz,
+\newblock ``Pattern learning with deep neural networks in {EMG}-based speech
+  recognition,''
+\newblock in {\em 2014 36th {Annual} {International} {Conference} of the {IEEE}
+  {Engineering} in {Medicine} and {Biology} {Society}}, Chicago, IL, Aug. 2014,
+  pp. 4200--4203, IEEE.
+
+\bibitem{diener_session-independent_nodate}
+Lorenz Diener, Gerrit Felsch, Miguel Angrick, and Tanja Schultz,
+\newblock ``Session-{Independent} {Array}-{Based} {EMG}-to-{Speech}
+  {Conversion} using {Convolu}- tional {Neural} {Networks},''
+\newblock p.~5.
+
+\bibitem{noauthor_how_nodate}
+``How to {Create} a {Simple} {Low}-{Pass} {Filter} - {TomRoelandts}.com,'' .
+
+\bibitem{karpathy_visualizing_2016}
+Andrej Karpathy, Justin Johnson, and Li~Fei-Fei,
+\newblock ``{VISUALIZING} {AND} {UNDERSTANDING} {RECURRENT} {NETWORKS},''
+\newblock p.~11, 2016.
+
+\bibitem{graves_speech_2013}
+Alex Graves, Abdel-rahman Mohamed, and Geoffrey Hinton,
+\newblock ``Speech {Recognition} with {Deep} {Recurrent} {Neural} {Networks},''
+\newblock {\em arXiv:1303.5778 [cs]}, Mar. 2013,
+\newblock arXiv: 1303.5778.
+
+\bibitem{noauthor_cs231n_nodate}
+``{CS}231n {Convolutional} {Neural} {Networks} for {Visual} {Recognition},'' .
+
+\bibitem{huzaifah_comparison_2017}
+M.~Huzaifah,
+\newblock ``Comparison of {Time}-{Frequency} {Representations} for
+  {Environmental} {Sound} {Classification} using {Convolutional} {Neural}
+  {Networks},''
+\newblock {\em arXiv:1706.07156 [cs]}, June 2017,
+\newblock arXiv: 1706.07156.
+
+\bibitem{pauk_419._2008}
+J~Pauk,
+\newblock ``419. {Different} techniques for {EMG} signal processing,''
+\newblock vol. 10, no. 4, pp. 7, 2008.
+
+\bibitem{wletCNN}
+Ahmet Taspinar,
+\newblock ``A guide for using the wavelet transform in machine learning.,''
+  2018.
+
+\bibitem{ferdoush_wireless_2014}
+Sheikh Ferdoush and Xinrong Li,
+\newblock ``Wireless {Sensor} {Network} {System} {Design} {Using} {Raspberry}
+  {Pi} and {Arduino} for {Environmental} {Monitoring} {Applications},''
+\newblock {\em Procedia Computer Science}, vol. 34, pp. 103--110, Jan. 2014.
+
+\end{thebibliography}
